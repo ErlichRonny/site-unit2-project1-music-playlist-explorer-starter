@@ -16,10 +16,10 @@ function openModal(playlistDict) {
     playlistDict.playlistTitle[2][1];
   document.getElementById("album2").innerText =
     playlistDict.playlistTitle[2][2];
-  document.getElementById("song2").innerText = playlistDict.playlistTitle[3][0];
-  document.getElementById("artist2").innerText =
+  document.getElementById("song3").innerText = playlistDict.playlistTitle[3][0];
+  document.getElementById("artist3").innerText =
     playlistDict.playlistTitle[3][1];
-  document.getElementById("album2").innerText =
+  document.getElementById("album3").innerText =
     playlistDict.playlistTitle[3][2];
 
   //     document.getElementById('albumName').innerText = playlist.albumName;

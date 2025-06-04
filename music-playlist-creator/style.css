@@ -12,6 +12,12 @@ header {
 }
 
 footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  padding: 15px 10px 15px 10px;
+  width: 100%;
   color: #dd7575;
   background-color: #ebc2c2;
   text-align: center;
@@ -19,23 +25,56 @@ footer {
 
 .playlist_cards {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .playlist_card {
-  margin: 50px;
+  margin: 30px 50px;
   padding: 10px 10px 10px 10px;
   border: 2px solid #dd7575;
   border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
 }
 
-
-
 .playlist_card:hover {
-  background: #eb8f8f;
-  border: 2px solid #eb8f8f
+  background: #eb9f9f;
+  border: 2px solid #eb9f9f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal_song_img {
+  display: inline-block;
+}
+
+.playlist_modal {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: auto;
+}
+
+.playlist_modal div {
+  text-align: center;
+  justify-content: center;
+}
+
+.playlist_modal img {
+  margin-right: 20px;
+}
+
+.song_modal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
 }
 .modal {
   display: none; /* Hidden by default */
@@ -54,6 +93,7 @@ footer {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 2%;
 }
 .close {
   color: #aaa;
