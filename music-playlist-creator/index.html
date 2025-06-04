@@ -1,27 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Music Playlist Explorer</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="script.js"></script> -->
+  </head>
+  <body>
     <header>
-        <!-- Your header content here -->
+      <!-- Your header content here -->
+      <h2>Music Playlist Explorer</h2>
     </header>
 
-    <main> 
-        <!-- Your main content here -->
+    <main>
+      <!-- Your main content here -->
+      <div class="container">
+        <!-- ≥<section class="playlist_cards"> -->
+        <div class="playlist_cards">
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <div class="playlist_card">
+            <img src="./assets/img/playlist.png" width="200" height="200" />
+            <h3>Playlist Title</h3>
+            <p>Creator Name</p>
+            <p>Like Count</p>
+          </div>
+          <!-- </section> -->
+        </div>
+      </div>
+      
+
+      <button
+        onclick="openModal({playlistTitle: [['Playlist Title', 'Creator Name'], ['Song Title 1', 'Artist Name 1', 'Album Name 1'], ['Song Title 2', 'Artist Name 2', 'Album Name 2'], ['Song Title 3',
+        'Artist Name 3', 'Album Name 3']]})"
+      >
+        Click here!
+      </button>
     </main>
 
+    <div id="playlistModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+          <img src="./assets/img/playlist.png" width="200" height="200" />
+          <h1 id="playlistTitle"></h1>
+          <h2 id="creatorName"></h2>
+          <h3 id="song1"></h3>
+          <p id="artist1"></p>
+          <p id="album1"></p>
+          <h3 id="song2"></h3>
+          <p id="artist2"></p>
+          <p id="album2"></p>
+          <h3 id="song3"></h3>
+          <p id="artist3"></p>
+          <p id="album3"></p>
+        </div>
+      </div>
+    </div>
+
     <footer>
-        <!-- Your footer content here -->
+      <!-- Your footer content here -->
+      <h2>...</h2>
     </footer>
-    <script src="data/data.js"></script>
+    <!-- <script src="data/data.js"></script> -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
