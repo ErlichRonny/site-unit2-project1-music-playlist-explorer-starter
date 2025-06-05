@@ -1,0 +1,82 @@
+[
+  {
+    "playlistID": 1,
+    "playlist_name": "Rock n roll 🤘🎸",
+    "playlist_author": "freddie_mercury",
+    "playlist_art": "./assets/img/rocknroll.jpeg",
+    "songs": [
+      ["Nightrain", "Guns N' Roses", "Appetite for Destruction"],
+      ["Killer Queen", "Queen", "Sheer Heart Attack"]
+    ]
+  },
+  {
+    "playlistID": 2,
+    "playlist_name": "Sad songs 💧💔",
+    "playlist_author": "introvertxx12",
+    "playlist_art": "./assets/img/billie.jpeg",
+    "songs": [
+      ["Happier Than Ever", "Billie Eilish", "Happier Than Ever"],
+      ["I Bet on Losing Dogs", "Mitski", "Puberty 2"]
+    ]
+  },
+  {
+    "playlistID": 3,
+    "playlist_name": "Partyyy 🪩🍾",
+    "playlist_author": "good_timer",
+    "playlist_art": "./assets/img/pitbull.jpeg",
+    "songs": [
+      ["Give Me Everything", "Pitbull", "Planet Pit"],
+      ["Blow", "Kesha", "Cannibal"]
+    ]
+  },
+  {
+    "playlistID": 4,
+    "playlist_name": "Emo vibe 🖤🫩",
+    "playlist_author": "gerard_way",
+    "playlist_art": "./assets/img/falloutboy.jpeg",
+    "songs": [
+      ["Dance, Dance", "Fall Out Boy", "From Under the Cork Tree"],
+      ["I Don't Love You", "My Chemical Romance", "The Black Parade"]
+    ]
+  },
+  {
+    "playlistID": 5,
+    "playlist_name": "2000s Hits 🥳",
+    "playlist_author": "mikasolei",
+    "playlist_art": "./assets/img/kesha.jpeg",
+    "songs": [
+      ["Like a G6", "Far East Movement", "Free Wired"],
+      ["Turn My Swag On", "Soulja Boy", "iSouljaBoyTellem"]
+    ]
+  },
+  {
+    "playlistID": "6",
+    "playlist_name": "ABBA ✨",
+    "playlist_author": "floriane",
+    "playlist_art": "./assets/img/abba.jpeg",
+    "songs": [
+      ["Gimme! Gimme! Gimme!", "ABBA", "Voulez-Vous"],
+      ["Dancing Queen", "ABBA", "Arrival"]
+    ]
+  },
+  {
+    "playlistID": 7,
+    "playlist_name": "So American!",
+    "playlist_author": "natila",
+    "playlist_art": "./assets/img/sour.jpeg",
+    "songs": [
+      ["deja vu", "Olivia Rodrigo", "Sour"],
+      ["get him back!", "Olivia Rodrigo", "Guts"]
+    ]
+  },
+  {
+    "playlistID": 8,
+    "playlist_name": "beach songs 🌊🏝️",
+    "playlist_author": "anna",
+    "playlist_art": "./assets/img/beach.jpeg",
+    "songs": [
+      ["Riptide", "Vance Joy", "Dream Your Life Away"],
+      ["Santeria", "Sublime", "Sublime"]
+    ]
+  }
+]
