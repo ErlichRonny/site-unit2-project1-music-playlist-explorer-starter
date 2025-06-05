@@ -5,8 +5,21 @@
     "playlist_author": "freddie_mercury",
     "playlist_art": "./assets/img/rocknroll.jpeg",
     "songs": [
-      ["Nightrain", "Guns N' Roses", "Appetite for Destruction", "4:28", "./assets/img/nightrain.jpeg"],
-      ["Killer Queen", "Queen", "Sheer Heart Attack", "2:59", "./assets/img/killerqueen.jpeg"]
+      [
+        "Nightrain",
+        "Guns N' Roses",
+        "Appetite for Destruction",
+        "4:28",
+        "./assets/img/nightrain.jpeg"
+      ],
+      [
+        "Killer Queen",
+        "Queen",
+        "Sheer Heart Attack",
+        "2:59",
+        "./assets/img/killerqueen.jpeg"
+      ],
+      ["Runaway", "Bon Jovi", "Bon Jovi", "3:51", "./assets/img/bonjovi.jpeg"]
     ],
     "like_count": 10
   },
@@ -16,8 +29,27 @@
     "playlist_author": "introvertxx12",
     "playlist_art": "./assets/img/billie.jpeg",
     "songs": [
-      ["Happier Than Ever", "Billie Eilish", "Happier Than Ever", "4:58", "./assets/img/billie.jpeg"],
-      ["I Bet on Losing Dogs", "Mitski", "Puberty 2", "2:49", "./assets/img/mitski.jpeg"]
+      [
+        "Happier Than Ever",
+        "Billie Eilish",
+        "Happier Than Ever",
+        "4:58",
+        "./assets/img/billie.jpeg"
+      ],
+      [
+        "I Bet on Losing Dogs",
+        "Mitski",
+        "Puberty 2",
+        "2:49",
+        "./assets/img/mitski.jpeg"
+      ],
+      [
+        "Glimpse of Us",
+        "Joji",
+        "Glimpse of Us",
+        "3:53",
+        "./assets/img/joji.jpeg"
+      ]
     ],
     "like_count": 2
   },
@@ -27,8 +59,15 @@
     "playlist_author": "good_timer",
     "playlist_art": "./assets/img/pitbull.jpeg",
     "songs": [
-      ["Give Me Everything", "Pitbull", "Planet Pit", "4:12", "./assets/img/pitbull2.jpeg"],
-      ["Blow", "Kesha", "Cannibal", "3:40", "./assets/img/blow.jpeg"]
+      [
+        "Give Me Everything",
+        "Pitbull",
+        "Planet Pit",
+        "4:12",
+        "./assets/img/pitbull2.jpeg"
+      ],
+      ["Blow", "Kesha", "Cannibal", "3:40", "./assets/img/blow.jpeg"],
+      ["Hot in Herre", "Nelly", "Nellyville", "4:05", "./assets/img/nelly.jpeg"]
     ],
     "like_count": 27
   },
@@ -38,8 +77,27 @@
     "playlist_author": "gerard_way",
     "playlist_art": "./assets/img/falloutboy.jpeg",
     "songs": [
-      ["Dance, Dance", "Fall Out Boy", "From Under the Cork Tree", "3:00", "./assets/img/dancedance.jpeg"],
-      ["I Don't Love You", "My Chemical Romance", "The Black Parade", "3:58", "./assets/img/mcr.jpeg"]
+      [
+        "Dance, Dance",
+        "Fall Out Boy",
+        "From Under the Cork Tree",
+        "3:00",
+        "./assets/img/dancedance.jpeg"
+      ],
+      [
+        "I Don't Love You",
+        "My Chemical Romance",
+        "The Black Parade",
+        "3:58",
+        "./assets/img/mcr.jpeg"
+      ],
+      [
+        "Ignorance",
+        "Paramore",
+        "Brand New Eyes",
+        "3:38",
+        "./assets/img/paramore.jpeg"
+      ]
     ],
     "like_count": 1
   },
@@ -49,8 +107,27 @@
     "playlist_author": "mikasolei",
     "playlist_art": "./assets/img/kesha.jpeg",
     "songs": [
-      ["Like a G6", "Far East Movement", "Free Wired", "3:38", "./assets/img/likeag6.jpeg"],
-      ["Turn My Swag On", "Soulja Boy", "iSouljaBoyTellem", "3:27", "./assets/img/soulja.jpeg"]
+      [
+        "Like a G6",
+        "Far East Movement",
+        "Free Wired",
+        "3:38",
+        "./assets/img/likeag6.jpeg"
+      ],
+      [
+        "Turn My Swag On",
+        "Soulja Boy",
+        "iSouljaBoyTellem",
+        "3:27",
+        "./assets/img/soulja.jpeg"
+      ],
+      [
+        "Glad You Came",
+        "The Wanted",
+        "The Wanted",
+        "3:23",
+        "./assets/img/gladyoucame.jpeg"
+      ]
     ],
     "like_count": 0
   },
@@ -60,8 +137,15 @@
     "playlist_author": "floriane",
     "playlist_art": "./assets/img/abba.jpeg",
     "songs": [
-      ["Gimme! Gimme! Gimme!", "ABBA", "Voulez-Vous", "3:36", "./assets/img/abba2.jpeg"],
-      ["Dancing Queen", "ABBA", "Arrival", "3:50", "./assets/img/abba3.jpeg"]
+      [
+        "Gimme! Gimme! Gimme!",
+        "ABBA",
+        "Voulez-Vous",
+        "3:36",
+        "./assets/img/abba2.jpeg"
+      ],
+      ["Dancing Queen", "ABBA", "Arrival", "3:50", "./assets/img/abba3.jpeg"],
+      ["The Winner Takes It All", "ABBA", "Super Trouper", "4:20", "./assets/img/abba4.jpeg"]
     ],
     "like_count": 5
   },
@@ -72,7 +156,20 @@
     "playlist_art": "./assets/img/sour.jpeg",
     "songs": [
       ["deja vu", "Olivia Rodrigo", "Sour", "3:36", "./assets/img/sour.jpeg"],
-      ["get him back!", "Olivia Rodrigo", "Guts", "3:32", "./assets/img/olivia.jpeg"]
+      [
+        "get him back!",
+        "Olivia Rodrigo",
+        "Guts",
+        "3:32",
+        "./assets/img/olivia.jpeg"
+      ],
+      [
+        "Obsessed",
+        "Olivia Rodrigo",
+        "Guts",
+        "2:50",
+        "./assets/img/guts2.jpeg"
+      ]
     ],
     "like_count": 17
   },
@@ -82,8 +179,15 @@
     "playlist_author": "anna",
     "playlist_art": "./assets/img/beach.jpeg",
     "songs": [
-      ["Riptide", "Vance Joy", "Dream Your Life Away", "3:24", "./assets/img/riptide.jpeg"],
-      ["Santeria", "Sublime", "Sublime", "3:03", "./assets/img/sublime.jpeg"]
+      [
+        "Riptide",
+        "Vance Joy",
+        "Dream Your Life Away",
+        "3:24",
+        "./assets/img/riptide.jpeg"
+      ],
+      ["Santeria", "Sublime", "Sublime", "3:03", "./assets/img/sublime.jpeg"],
+      ["Tongue Tied", "GROUPLOVE", "Never Trust a Happy Song", "3:38", "./assets/img/grouplove.jpeg"]
     ],
     "like_count": 20
   }

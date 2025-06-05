@@ -74,15 +74,12 @@ function createLikeView(playlist) {
     }
   });
   const likeCount = document.createElement("p");
-  console.log(playlist);
   likeCount.innerText = playlist.like_count;
   likeDiv.appendChild(likeCount);
   return likeDiv;
 }
 
 function openModal(playlistDict) {
-  console.log(playlistDict);
-  console.log(playlistDict.songs);
   document.getElementById("playlistTitle").innerText =
     playlistDict.playlist_name;
   document.getElementById("creatorName").innerText =
@@ -97,49 +94,40 @@ function openModal(playlistDict) {
   document.getElementById("song2").innerText = playlistDict.songs[1][0];
   document.getElementById("artist2").innerText = playlistDict.songs[1][1];
   document.getElementById("album2").innerText = playlistDict.songs[1][3];
+
+  document.getElementById("song3_img").src = playlistDict.songs[2][4];
+  document.getElementById("song3").innerText = playlistDict.songs[2][0];
+  document.getElementById("artist3").innerText = playlistDict.songs[2][1];
   modal.style.display = "block";
 
   const shuffleButton = document.getElementById("shuffle");
+  shuffleLogic(shuffleButton, playlistDict);
+}
+
+function shuffleLogic(shuffleButton, playlistDict) {
   shuffleButton.addEventListener("click", function () {
-    console.log("shuffle clicked");
     let songsList = new Set();
     while (songsList.size < 3) {
-      songsList.add(Math.floor(Math.random() * (3 - 1 + 1) + 1));
+      songsList.add(Math.floor(Math.random() * 3));
     }
-    const result = Array.from(songsList);
-    if (result[0] == 1) {
-      document.getElementById("song1_img").src = playlistDict.songs[0][4];
-      document.getElementById("song1").innerText = playlistDict.songs[0][0];
-      document.getElementById("artist1").innerText = playlistDict.songs[0][1];
-      document.getElementById("album1").innerText = playlistDict.songs[0][3];
-    } else if (result[0] == 2) {
-      document.getElementById("song1_img").src = playlistDict.songs[1][4];
-      document.getElementById("song1").innerText = playlistDict.songs[1][0];
-      document.getElementById("artist1").innerText = playlistDict.songs[1][1];
-      document.getElementById("album1").innerText = playlistDict.songs[1][3];
-    } else if (result[0] == 3) {
-      document.getElementById("song1_img").src = playlistDict.songs[2][4];
-      document.getElementById("song1").innerText = playlistDict.songs[2][0];
-      document.getElementById("artist1").innerText = playlistDict.songs[2][1];
-      document.getElementById("album1").innerText = playlistDict.songs[2][3];
-    }
-    if (result[1] == 1) {
-      document.getElementById("song2_img").src = playlistDict.songs[0][4];
-      document.getElementById("song2").innerText = playlistDict.songs[0][0];
-      document.getElementById("artist2").innerText = playlistDict.songs[0][1];
-      document.getElementById("album2").innerText = playlistDict.songs[0][3];
-    } else if (result[1] == 2) {
-      document.getElementById("song2_img").src = playlistDict.songs[1][4];
-      document.getElementById("song2").innerText = playlistDict.songs[1][0];
-      document.getElementById("artist2").innerText = playlistDict.songs[1][1];
-      document.getElementById("album2").innerText = playlistDict.songs[1][3];
-    } else if (result[1] == 3) {
-      document.getElementById("song2_img").src = playlistDict.songs[2][4];
-      document.getElementById("song2").innerText = playlistDict.songs[2][0];
-      document.getElementById("artist2").innerText = playlistDict.songs[2][1];
-      document.getElementById("album2").innerText = playlistDict.songs[2][3];
-    }
+    const shuffledArray = Array.from(songsList);
+    shuffledArray.forEach((originalIndex, newPosition) => {
+      updatePlaylistPosition(newPosition, originalIndex, playlistDict);
+    });
   });
+}
+
+function updatePlaylistPosition(position, originalIndex, playlistDict) {
+  const positionStr = (position + 1).toString();
+  console.log(playlistDict.songs[originalIndex][4]);
+  document.getElementById(`song${positionStr}_img`).src =
+    playlistDict.songs[originalIndex][4];
+  document.getElementById(`song${positionStr}`).innerText =
+    playlistDict.songs[originalIndex][0];
+  document.getElementById(`artist${positionStr}`).innerText =
+    playlistDict.songs[originalIndex][1];
+  document.getElementById(`album${positionStr}`).innerText =
+    playlistDict.songs[originalIndex][3];
 }
 
 span.onclick = function () {
