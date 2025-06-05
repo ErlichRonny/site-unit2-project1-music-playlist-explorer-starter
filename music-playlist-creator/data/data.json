@@ -1,22 +1,22 @@
 [
   {
     "playlistID": 1,
-    "playlist_name": "Rock n roll 🤘🎸",
+    "playlist_name": "Rock n roll 🎸",
     "playlist_author": "freddie_mercury",
     "playlist_art": "./assets/img/rocknroll.jpeg",
     "songs": [
-      ["Nightrain", "Guns N' Roses", "Appetite for Destruction"],
-      ["Killer Queen", "Queen", "Sheer Heart Attack"]
+      ["Nightrain", "Guns N' Roses", "Appetite for Destruction", "4:28", "./assets/img/nightrain.jpeg"],
+      ["Killer Queen", "Queen", "Sheer Heart Attack", "2:59", "./assets/img/killerqueen.jpeg"]
     ]
   },
   {
     "playlistID": 2,
-    "playlist_name": "Sad songs 💧💔",
+    "playlist_name": "Sad songs",
     "playlist_author": "introvertxx12",
     "playlist_art": "./assets/img/billie.jpeg",
     "songs": [
-      ["Happier Than Ever", "Billie Eilish", "Happier Than Ever"],
-      ["I Bet on Losing Dogs", "Mitski", "Puberty 2"]
+      ["Happier Than Ever", "Billie Eilish", "Happier Than Ever", "4:58", "./assets/img/billie.jpeg"],
+      ["I Bet on Losing Dogs", "Mitski", "Puberty 2", "2:49", "./assets/img/mitski.jpeg"]
     ]
   },
   {
@@ -25,18 +25,18 @@
     "playlist_author": "good_timer",
     "playlist_art": "./assets/img/pitbull.jpeg",
     "songs": [
-      ["Give Me Everything", "Pitbull", "Planet Pit"],
-      ["Blow", "Kesha", "Cannibal"]
+      ["Give Me Everything", "Pitbull", "Planet Pit", "4:12", "./assets/img/pitbull2.jpeg"],
+      ["Blow", "Kesha", "Cannibal", "3:40", "./assets/img/blow.jpeg"]
     ]
   },
   {
     "playlistID": 4,
-    "playlist_name": "Emo vibe 🖤🫩",
+    "playlist_name": "Pop punk",
     "playlist_author": "gerard_way",
     "playlist_art": "./assets/img/falloutboy.jpeg",
     "songs": [
-      ["Dance, Dance", "Fall Out Boy", "From Under the Cork Tree"],
-      ["I Don't Love You", "My Chemical Romance", "The Black Parade"]
+      ["Dance, Dance", "Fall Out Boy", "From Under the Cork Tree", "3:00", "./assets/img/dancedance.jpeg"],
+      ["I Don't Love You", "My Chemical Romance", "The Black Parade", "3:58", "./assets/img/mcr.jpeg"]
     ]
   },
   {
@@ -45,8 +45,8 @@
     "playlist_author": "mikasolei",
     "playlist_art": "./assets/img/kesha.jpeg",
     "songs": [
-      ["Like a G6", "Far East Movement", "Free Wired"],
-      ["Turn My Swag On", "Soulja Boy", "iSouljaBoyTellem"]
+      ["Like a G6", "Far East Movement", "Free Wired", "3:38", "./assets/img/likeag6.jpeg"],
+      ["Turn My Swag On", "Soulja Boy", "iSouljaBoyTellem", "3:27", "./assets/img/soulja.jpeg"]
     ]
   },
   {
@@ -55,18 +55,18 @@
     "playlist_author": "floriane",
     "playlist_art": "./assets/img/abba.jpeg",
     "songs": [
-      ["Gimme! Gimme! Gimme!", "ABBA", "Voulez-Vous"],
-      ["Dancing Queen", "ABBA", "Arrival"]
+      ["Gimme! Gimme! Gimme!", "ABBA", "Voulez-Vous", "3:36", "./assets/img/abba2.jpeg"],
+      ["Dancing Queen", "ABBA", "Arrival", "3:50", "./assets/img/abba3.jpeg"]
     ]
   },
   {
     "playlistID": 7,
-    "playlist_name": "So American!",
+    "playlist_name": "Teen pop",
     "playlist_author": "natila",
     "playlist_art": "./assets/img/sour.jpeg",
     "songs": [
-      ["deja vu", "Olivia Rodrigo", "Sour"],
-      ["get him back!", "Olivia Rodrigo", "Guts"]
+      ["deja vu", "Olivia Rodrigo", "Sour", "3:36", "./assets/img/sour.jpeg"],
+      ["get him back!", "Olivia Rodrigo", "Guts", "3:32", "./assets/img/olivia.jpeg"]
     ]
   },
   {
@@ -75,8 +75,8 @@
     "playlist_author": "anna",
     "playlist_art": "./assets/img/beach.jpeg",
     "songs": [
-      ["Riptide", "Vance Joy", "Dream Your Life Away"],
-      ["Santeria", "Sublime", "Sublime"]
+      ["Riptide", "Vance Joy", "Dream Your Life Away", "3:24", "./assets/img/riptide.jpeg"],
+      ["Santeria", "Sublime", "Sublime", "3:03", "./assets/img/sublime.jpeg"]
     ]
   }
 ]
