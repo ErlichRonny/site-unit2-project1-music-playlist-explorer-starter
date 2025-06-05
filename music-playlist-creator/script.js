@@ -40,13 +40,25 @@ function createPlaylistCards(data) {
       likeButton.setAttribute("class", "like_button");
       likeButton.innerText = "♡ ";
       likeDiv.appendChild(likeButton);
+      let likeClicked = false;
       likeButton.addEventListener("click", function (event) {
-        const currentLikes = parseInt(likeCount.innerText);
-        likeCount.innerText = currentLikes+1;
-        event.stopPropagation();
+        if (likeClicked === false) {
+          likeClicked = true;
+          const currentLikes = parseInt(likeCount.innerText);
+          likeCount.innerText = currentLikes + 1;
+          likeButton.innerText = "❤️";
+          event.stopPropagation();
+        } else {
+          likeClicked = false;
+          const currentLikes = parseInt(likeCount.innerText);
+          likeCount.innerText = currentLikes - 1;
+          likeButton.innerText = "♡ ";
+          event.stopPropagation();
+        }
       });
       const likeCount = document.createElement("p");
-      likeCount.innerText = 0;
+      console.log(playlist);
+      likeCount.innerText = playlist.like_count;
       likeDiv.appendChild(likeCount);
       outerDiv.appendChild(likeDiv);
       section.appendChild(outerDiv);
@@ -85,3 +97,4 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+å;
