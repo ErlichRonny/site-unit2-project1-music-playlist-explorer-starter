@@ -106,3 +106,16 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
+.like_button {
+  background: white;
+  border: 2px solid red;
+    border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.like_button:hover {
+  background: #eb9f9f;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

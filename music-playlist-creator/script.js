@@ -35,50 +35,29 @@ function createPlaylistCards(data) {
       const creatorName = document.createElement("p");
       creatorName.innerText = playlist.playlist_author;
       outerDiv.appendChild(creatorName);
+      const likeDiv = document.createElement("div");
+      const likeButton = document.createElement("button");
+      likeButton.setAttribute("class", "like_button");
+      likeButton.innerText = "♡ ";
+      likeDiv.appendChild(likeButton);
+      likeButton.addEventListener("click", function (event) {
+        const currentLikes = parseInt(likeCount.innerText);
+        likeCount.innerText = currentLikes+1;
+        event.stopPropagation();
+      });
       const likeCount = document.createElement("p");
-      outerDiv.appendChild(likeCount);
+      likeCount.innerText = 0;
+      likeDiv.appendChild(likeCount);
+      outerDiv.appendChild(likeDiv);
       section.appendChild(outerDiv);
       outerDiv.addEventListener("click", function () {
         openModal(playlist);
-        //   playlistTitle: [
-        //     [playlist.playlist_name, playlist.playlist_author],
-        //     [playlist.songs[0], playlist.songs[1], playlist.songs[3], playlist.songs[4]],
-        //     [playlist.songs[5], playlist.songs[6], playlist.songs[7]],
-        //     ["Song Title 3", "Artist Name 3", "Album Name 3"],
-        //   ],
-        // );
       });
     });
   }
 }
-/*
-          <div
-            class="playlist_card"
-            onclick="openModal({playlistTitle: [['Playlist Title', 'Creator Name'], ['Song Title 1', 'Artist Name 1', 'Album Name 1'], ['Song Title 2', 'Artist Name 2', 'Album Name 2'], ['Song Title 3', 'Artist Name 3', 'Album Name 3']]})"
-          >
-            <img src="./assets/img/playlist.png" width="200" height="200" />
-            <h3>Playlist Title</h3>
-            <p>Creator Name</p>
-            <p>Like Count</p>
-          </div>
-          */
 
 function openModal(playlistDict) {
-  //   document.getElementById("song1").innerText = playlistDict.playlistTitle[1][0];
-  //   document.getElementById("artist1").innerText =
-  //     playlistDict.playlistTitle[1][1];
-  //   document.getElementById("album1").innerText =
-  //     playlistDict.playlistTitle[1][2];
-  //   document.getElementById("song2").innerText = playlistDict.playlistTitle[2][0];
-  //   document.getElementById("artist2").innerText =
-  //     playlistDict.playlistTitle[2][1];
-  //   document.getElementById("album2").innerText =
-  //     playlistDict.playlistTitle[2][2];
-  //   document.getElementById("song3").innerText = playlistDict.playlistTitle[3][0];
-  //   document.getElementById("artist3").innerText =
-  //     playlistDict.playlistTitle[3][1];
-  //   document.getElementById("album3").innerText =
-  //     playlistDict.playlistTitle[3][2];
   console.log(playlistDict);
   console.log(playlistDict.songs);
   document.getElementById("playlistTitle").innerText =
@@ -88,14 +67,13 @@ function openModal(playlistDict) {
   document.getElementById("playlist_img").src = playlistDict.playlist_art;
   document.getElementById("song1_img").src = playlistDict.songs[0][4];
   document.getElementById("song1").innerText = playlistDict.songs[0][0];
-    document.getElementById("artist1").innerText = playlistDict.songs[0][1];
-    document.getElementById("album1").innerText = playlistDict.songs[0][3];
-
+  document.getElementById("artist1").innerText = playlistDict.songs[0][1];
+  document.getElementById("album1").innerText = playlistDict.songs[0][3];
 
   document.getElementById("song2_img").src = playlistDict.songs[1][4];
   document.getElementById("song2").innerText = playlistDict.songs[1][0];
-    document.getElementById("artist2").innerText = playlistDict.songs[1][1];
-    document.getElementById("album2").innerText = playlistDict.songs[1][3];
+  document.getElementById("artist2").innerText = playlistDict.songs[1][1];
+  document.getElementById("album2").innerText = playlistDict.songs[1][3];
   modal.style.display = "block";
 }
 
