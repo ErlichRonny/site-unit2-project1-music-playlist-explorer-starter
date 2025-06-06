@@ -14,17 +14,14 @@
     <header>
       <!-- Your header content here -->
       <h2>Music Playlist Explorer</h2>
-      <button> Featured </button>
+      <a href="featured.html" class="button-class"> Featured </a>
     </header>
 
     <main>
       <!-- Your main content here -->
       <div class="container">
-       <section class="playlist_cards">
-          </section>
-        </div>
+        <section class="playlist_cards"></section>
       </div>
-      ¸
     </main>
 
     <div id="playlistModal" class="modal">
@@ -32,17 +29,27 @@
         <span class="close">&times;</span>
         <div>
           <div class="playlist_modal">
-            <img id="playlist_img" src="./assets/img/playlist.png" width="200" height="200" />
+            <img
+              id="playlist_img"
+              src="./assets/img/playlist.png"
+              width="200"
+              height="200"
+            />
             <div>
               <h1 id="playlistTitle"></h1>
               <h2 id="creatorName"></h2>
-              <button id="shuffle"> Shuffle </button>
+              <button id="shuffle">Shuffle</button>
             </div>
           </div>
 
           <div class="playlist_card">
             <div class="song_modal" id="1">
-              <img id="song1_img" src="./assets/img/song.png" width="200" height="200" />
+              <img
+                id="song1_img"
+                src="./assets/img/song.png"
+                width="200"
+                height="200"
+              />
               <div>
                 <h3 id="song1"></h3>
                 <p id="artist1"></p>
@@ -52,18 +59,23 @@
           </div>
           <div class="playlist_card" id="2">
             <div class="song_modal">
-              <img id="song2_img" src="./assets/img/song.png" width="200" height="200" />
+              <img
+                id="song2_img"
+                src="./assets/img/song.png"
+                width="200"
+                height="200"
+              />
               <div>
                 <h3 id="song2"></h3>
                 <p id="artist2"></p>
                 <p id="album2"></p>
-                
               </div>
             </div>
           </div>
           <div class="playlist_card" id="3">
             <div class="song_modal">
-              <img id="song3_img"
+              <img
+                id="song3_img"
                 src="./assets/img/song.png"
                 width="200"
                 height="200"

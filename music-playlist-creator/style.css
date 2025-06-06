@@ -7,7 +7,10 @@ body {
 header {
   color: #dd7575;
   background-color: #ebc2c2;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
+  position: sticky;
   padding: 15px 10px 15px 10px;
 }
 
@@ -141,4 +144,14 @@ footer {
   display: inline-block;
   font-size: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-class {
+  padding: 15px 40px;
+  border: none;
+  color: #dd7575;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
 }
