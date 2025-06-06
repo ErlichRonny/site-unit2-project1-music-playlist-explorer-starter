@@ -22,23 +22,27 @@ if (window.location.href.includes("add_playlist.html")) {
   const addSongButton = document.getElementById("add_song_btn");
   const form = document.getElementById("playlistForm");
   const cancelButton = document.getElementById("cancel_btn");
+
+  addSong();
+
   addSongButton.addEventListener("click", addSong);
   cancelButton.addEventListener("click", cancelPlaylist);
   form.addEventListener("submit", createPlaylist);
 }
 
-function createPlaylist() {
+function createPlaylist(event) {
+  event.preventDefault();
   const playlistName = document.getElementById("playlist_name").value;
   const playlistAuthor = document.getElementById("playlist_author").value;
   const playlistArt = document.getElementById("playlist_art").value;
 
   const songList = document.querySelectorAll(".song");
   const songs = [];
-  songsList.forEach((item) => {
+  songList.forEach((item) => {
     const songName = item.querySelector(".song_name").value;
     const artist = item.querySelector(".artist_name").value;
     const album = item.querySelector(".album_name").value;
-    const duration = item.querySelector(".song_duration").value;
+    const duration = item.querySelector(".duration").value;
     const art = item.querySelector(".song_art").value;
     songs.push([songName, artist, album, duration, art]);
   });
@@ -247,17 +251,18 @@ function openModal(playlistDict) {
     document.getElementById("song3_img").src = playlistDict.songs[2][4];
     document.getElementById("song3").innerText = playlistDict.songs[2][0];
     document.getElementById("artist3").innerText = playlistDict.songs[2][1];
+    document.getElementById("album3").innerText = playlistDict.songs[2][3];
   }
 
   modal.style.display = "block";
 
   const shuffleButton = document.getElementById("shuffle");
-  shuffleLogic(shuffleButton, playlistDict);
-}
 
-function shuffleLogic(shuffleButton, playlistDict) {
-  shuffleButton.addEventListener("click", function () {
-    //  let songsList = new Set();
+  if (currShuffleFunc) {
+    shuffleButton.removeEventListener("click", currShuffleFunc);
+  }
+
+  currShuffleFunc = function () {
     let indices = [0, 1, 2];
     for (let i = indices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -266,7 +271,10 @@ function shuffleLogic(shuffleButton, playlistDict) {
     indices.forEach((originalIndex, newPosition) => {
       updatePlaylistPosition(newPosition, originalIndex, playlistDict);
     });
-  });
+  };
+
+  shuffleButton.addEventListener("click", currShuffleFunc);
+  modal.style.visibility = "visible";
 }
 
 function updatePlaylistPosition(position, originalIndex, playlistDict) {
