@@ -264,9 +264,45 @@ footer {
   flex-direction: row;
 }
 
+.edit_button {
+  background-color: rgb(220, 138, 138);
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: -40px;
+  display: block;
+}
+
+.edit_button:hover {
+  background-color: rgb(186, 114, 114);
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .delete_button {
   background-color: rgb(232, 81, 81);
-  margin-left: 70px;
-  width: 70px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  display: block;
+}
+
+.delete_button:hover {
+  background-color: rgb(191, 64, 64);
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }

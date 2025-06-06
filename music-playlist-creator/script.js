@@ -204,14 +204,24 @@ function createPlaylistCards(data) {
       openModal(playlist);
     });
 
+    // Create edit button
+    const editButton = document.createElement("button");
+    editButton.setAttribute("class", "edit_button");
+    editButton.innerText = "✏️";
+    likeDiv.appendChild(editButton);
+    editButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
     // Create delete button
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "delete_button");
-    deleteButton.innerText = "Delete Playlist";
+    deleteButton.innerText = "🗑️";
     likeDiv.appendChild(deleteButton);
-    deleteButton.addEventListener("click", function(event){
-        event.stopPropagation(outerDiv.remove());
-    })
+    deleteButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+      outerDiv.remove();
+    });
   });
 }
 
