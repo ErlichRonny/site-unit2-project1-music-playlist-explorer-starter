@@ -203,11 +203,21 @@ function createPlaylistCards(data) {
     outerDiv.addEventListener("click", function () {
       openModal(playlist);
     });
+
+    // Create delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", "delete_button");
+    deleteButton.innerText = "Delete Playlist";
+    likeDiv.appendChild(deleteButton);
+    deleteButton.addEventListener("click", function(event){
+        event.stopPropagation(outerDiv.remove());
+    })
   });
 }
 
 function createLikeView(playlist) {
   const likeDiv = document.createElement("div");
+  likeDiv.setAttribute("class", "like_div");
   const likeButton = document.createElement("button");
   likeButton.setAttribute("class", "like_button");
   likeButton.innerText = "♡ ";

@@ -115,8 +115,9 @@ footer {
 .like_button {
   background: white;
   border: 2px solid red;
-  border-radius: 50%;
+  border-radius: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
 }
 
 .like_button:hover {
@@ -164,7 +165,6 @@ footer {
   margin: 20px auto;
   justify-content: center;
   background-color: white;
-
 }
 
 .container {
@@ -253,8 +253,20 @@ footer {
   margin-right: 15px;
 }
 
-#add_song_btn{
+#add_song_btn {
   background-color: rgb(97, 204, 97);
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.like_div {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete_button {
+  background-color: rgb(232, 81, 81);
+  margin-left: 70px;
+  width: 70px;
+  height: 50px;
 }
