@@ -39,12 +39,13 @@ footer {
 }
 
 .playlist_card {
-  margin: 30px 50px;
+  margin: 10px 50px;
   padding: 10px 10px 10px 10px;
   border: 2px solid #dd7575;
   border-radius: 8px;
   cursor: pointer;
   transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .playlist_card:hover {
@@ -157,6 +158,15 @@ footer {
   font-size: 25px;
 }
 
+#add_button {
+  display: flex;
+  padding: 20px;
+  margin: 20px auto;
+  justify-content: center;
+  background-color: white;
+
+}
+
 .container {
   display: flex;
   padding: 20px;
@@ -241,4 +251,10 @@ footer {
 
 .featured_song_img {
   margin-right: 15px;
+}
+
+#add_song_btn{
+  background-color: rgb(97, 204, 97);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

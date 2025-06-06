@@ -273,7 +273,7 @@ function openModal(playlistDict) {
     shuffleButton.removeEventListener("click", currShuffleFunc);
   }
   currShuffleFunc = function () {
-    shufflePlaylistDisplay();
+    shufflePlaylistDisplay(playlistDict);
   };
 
   shuffleButton.addEventListener("click", currShuffleFunc);
@@ -299,10 +299,9 @@ function shufflePlaylistDisplay(playlistDict) {
     <div>
     <h1 id="playlistTitle"></h1>
     <h2 id="creatorName"></h2>
-    <button id="shuffle">Shuffle</button>
-        <h3 id="${song[0]}"></h3>
-        <p id="${song[1]}"></p>
-        <p id="${song[3]}"></p>
+        <h3 id="${song[0]}">${song[0]}</h3>
+        <p id="${song[1]}">${song[1]}</p>
+        <p id="${song[3]}">${song[3]}</p>
     </div>
     </div>
     `;
