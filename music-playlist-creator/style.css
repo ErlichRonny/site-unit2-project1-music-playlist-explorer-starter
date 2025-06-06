@@ -165,6 +165,7 @@ footer {
   margin: 20px auto;
   justify-content: center;
   background-color: white;
+  font-size: 23px;
 }
 
 .container {
@@ -285,6 +286,28 @@ footer {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.edit_button {
+  background-color: rgb(220, 138, 138);
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: -40px;
+  display: block;
+}
+
+.edit_button:hover {
+  background-color: rgb(186, 114, 114);
+  width: 45px;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 50%;
+  margin-left: auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .search-bar-div {
   display: flex;
   justify-content: center;
@@ -296,4 +319,18 @@ footer {
   margin-right: 16px;
   font-size: 17px;
   width: 400px;
+}
+
+.sort_buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+  width: 100%;
+}
+
+.sort_button {
+  background-color:#ebc2c2;
+  margin-left: 10px;
 }

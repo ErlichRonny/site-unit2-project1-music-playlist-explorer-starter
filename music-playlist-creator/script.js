@@ -206,6 +206,12 @@ function createPlaylistCards(data) {
       openModal(playlist);
     });
 
+    // Create edit button
+    const editButton = document.createElement("button");
+    editButton.setAttribute("class", "edit_button");
+    editButton.innerText = "✏️";
+    likeDiv.appendChild(editButton);
+
     // Create delete button
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "delete_button");
