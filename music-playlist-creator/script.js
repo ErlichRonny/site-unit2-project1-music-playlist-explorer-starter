@@ -89,7 +89,7 @@ function addSong() {
     <input type="text" placeholder="Artist" class="artist_name" required>
     <input type="text" placeholder="Album" class="album_name" required>
     <input type="text" placeholder="Song duration" class="duration" required>
-    <input type="url" placeholder="Album Art URL" class="song_art" required>
+    <input type="text" placeholder="Album Art URL" class="song_art" required>
     <button type="button" class="remove_song_btn"> Remove Song </button>
     `;
 
@@ -107,11 +107,11 @@ function addSongWithData(song) {
   const songDiv = document.createElement("div");
   songDiv.setAttribute("class", "song");
   songDiv.innerHTML = `
-    <input type="text" placeholder="Song Name" class="song_name" value="${song[0]} required>
-    <input type="text" placeholder="Artist" class="artist_name" value="${song[1]} required>
-    <input type="text" placeholder="Album" class="album_name" value="${song[2]} required>
-    <input type="text" placeholder="Song duration" class="duration" value="${song[3]}required>
-    <input type="url" placeholder="Album Art URL" class="song_art" value="${song[4]}required>
+    <input type="text" placeholder="Song Name" class="song_name" value="${song[0]}" required>
+    <input type="text" placeholder="Artist" class="artist_name" value="${song[1]}" required>
+    <input type="text" placeholder="Album" class="album_name" value="${song[2]}" required>
+    <input type="text" placeholder="Song duration" class="duration" value="${song[3]}" required>
+    <input type="text" placeholder="Album Art URL" class="song_art" value="${song[4]}" required>
     <button type="button" class="remove_song_btn"> Remove Song </button>
     `;
 
@@ -203,6 +203,7 @@ function showFeaturedPlaylist(data) {
 
 function createPlaylistCards(data) {
   const section = document.querySelector(".playlist_cards");
+  section.innerHTML = "";
 
   if (!Array.isArray(data) || data.length === 0) {
     const emptyMessage = document.createElement("h3");
@@ -339,7 +340,10 @@ function openModal(playlistDict) {
 
 function shufflePlaylistDisplay(playlistDict) {
   const songsContainer = document.getElementById("songs_list_container");
-  let indices = [0, 1, 2];
+  let indices = [];
+  for (let i = 0; i < playlistDict.songs.length; i++) {
+    indices.push(i);
+  }
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -377,8 +381,23 @@ function loadEditPlaylist() {
     localStorage.getItem("userPlaylists") || "[]"
   );
   let playlist = userPlaylists.find((p) => p.playlistID == playlistID);
+  // User created playlist
   if (playlist) {
     populateEditForm(playlist);
+  } else {
+    // Must be JSON playlist
+    fetch("./data/data.json")
+      .then((data) => data.json())
+      .then((jsonData) => {
+        playlist = jsonData.find((p) => p.playlistID == playlistID);
+        if (playlist) {
+          populateEditForm(playlist);
+        }
+      })
+      .catch((error) => {
+        console.log("Error with fetching data", error);
+        window.location.href = "index.html";
+      });
   }
 }
 
@@ -394,6 +413,8 @@ function populateEditForm(playlist) {
 }
 
 function saveEditedPlaylist(event) {
+  // Prevent page refresh
+  event.preventDefault();
   const playlistID = localStorage.getItem("editPlaylistID");
   const playlistName = document.getElementById("playlist_name").value;
 
@@ -422,7 +443,7 @@ function saveEditedPlaylist(event) {
     playlist_author: playlistAuthor,
     playlist_art: playlistArt,
     songs: songs,
-    likeCount: currentPlaylists[index].likeCount,
+    like_count: currentPlaylists[index].likeCount,
   };
 
   // Prevent duplicate edited playlists
