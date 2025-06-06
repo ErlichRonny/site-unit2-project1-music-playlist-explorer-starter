@@ -234,28 +234,53 @@ function createLikeView(playlist) {
 }
 
 function openModal(playlistDict) {
+  clearModalSongs();
+
   document.getElementById("playlistTitle").innerText =
     playlistDict.playlist_name;
   document.getElementById("creatorName").innerText =
     playlistDict.playlist_author;
   document.getElementById("playlist_img").src = playlistDict.playlist_art;
-  if (playlistDict.songs && playlistDict.songs.length >= 3) {
-    document.getElementById("song1_img").src = playlistDict.songs[0][4];
-    document.getElementById("song1").innerText = playlistDict.songs[0][0];
-    document.getElementById("artist1").innerText = playlistDict.songs[0][1];
-    document.getElementById("album1").innerText = playlistDict.songs[0][3];
 
-    document.getElementById("song2_img").src = playlistDict.songs[1][4];
-    document.getElementById("song2").innerText = playlistDict.songs[1][0];
-    document.getElementById("artist2").innerText = playlistDict.songs[1][1];
-    document.getElementById("album2").innerText = playlistDict.songs[1][3];
+  const songsContainer = document.getElementById("modal_songs");
+  songsContainer.innerHTML = "";
 
-    document.getElementById("song3_img").src = playlistDict.songs[2][4];
-    document.getElementById("song3").innerText = playlistDict.songs[2][0];
-    document.getElementById("artist3").innerText = playlistDict.songs[2][1];
-    document.getElementById("album3").innerText = playlistDict.songs[2][3];
+  if (playlistDict.songs && playlistDict.songs.length > 0) {
+    playlistDict.songs.forEach((song) => {
+      const songRow = document.createElement("div");
+      songRow.setAttribute("class", "playlist_card");
+      songRow.innerHTML = `
+         <div class="song_modal" id="${song_id}">
+        <img id="playlist_card" src="${song[4]}" width="200" height="200"/>
+         <div>
+            <h1 id="playlistTitle"></h1>
+            <h2 id="creatorName"></h2>
+            <button id="shuffle">Shuffle</button>
+                <h3 id="${song[0]}"></h3>
+                <p id="${song[1]}"></p>
+                <p id="${song[3]}"></p>
+         </div>
+         </div>
+        `;
+      songsContainer.appendChild(songRow);
+    });
+    // document.getElementById("song1_img").src = playlistDict.songs[0][4];
+    // document.getElementById("song1").innerText = playlistDict.songs[0][0];
+    // document.getElementById("artist1").innerText = playlistDict.songs[0][1];
+    // document.getElementById("album1").innerText = playlistDict.songs[0][3];
+
+    // document.getElementById("song2_img").src = playlistDict.songs[1][4];
+    // document.getElementById("song2").innerText = playlistDict.songs[1][0];
+    // document.getElementById("artist2").innerText = playlistDict.songs[1][1];
+    // document.getElementById("album2").innerText = playlistDict.songs[1][3];
+
+    // document.getElementById("song3_img").src = playlistDict.songs[2][4];
+    // document.getElementById("song3").innerText = playlistDict.songs[2][0];
+    // document.getElementById("artist3").innerText = playlistDict.songs[2][1];
+    // document.getElementById("album3").innerText = playlistDict.songs[2][3];
+  } else {
+    songsContainer.innerHTML = "<p> No songs available</p>";
   }
-
 
   const shuffleButton = document.getElementById("shuffle");
 
@@ -275,21 +300,52 @@ function openModal(playlistDict) {
   };
 
   shuffleButton.addEventListener("click", currShuffleFunc);
-    modal.style.visibility = "visible";
-
+  modal.style.display = "block";
 }
 
 function updatePlaylistPosition(position, originalIndex, playlistDict) {
-  const positionStr = (position + 1).toString();
-  console.log(playlistDict.songs[originalIndex][4]);
-  document.getElementById(`song${positionStr}_img`).src =
-    playlistDict.songs[originalIndex][4];
-  document.getElementById(`song${positionStr}`).innerText =
-    playlistDict.songs[originalIndex][0];
-  document.getElementById(`artist${positionStr}`).innerText =
-    playlistDict.songs[originalIndex][1];
-  document.getElementById(`album${positionStr}`).innerText =
-    playlistDict.songs[originalIndex][3];
+  const songsContainer = document.getElementById("modal_songs");
+  const song = playlistDict.songs[originalIndex];
+  const songRow = document.createElement("div");
+  songRow.setAttribute("class", "playlist_card");
+
+  songRow.innerHTML = `
+    <div class="song_modal" id="${song_id}">
+<img id="playlist_card" src="${song[4]}" width="200" height="200"/>
+    <div>
+    <h1 id="playlistTitle"></h1>
+    <h2 id="creatorName"></h2>
+    <button id="shuffle">Shuffle</button>
+        <h3 id="${song[0]}"></h3>
+        <p id="${song[1]}"></p>
+        <p id="${song[3]}"></p>
+    </div>
+    </div>
+    `;
+  const oldRow = songsContainer.children[position];
+  if (oldRow) {
+    songsContainer.replaceChild(songRow, oldRow);
+  }
+}
+
+//   const positionStr = (position + 1).toString();
+//   console.log(playlistDict.songs[originalIndex][4]);
+//   document.getElementById(`song${positionStr}_img`).src =
+//     playlistDict.songs[originalIndex][4];
+//   document.getElementById(`song${positionStr}`).innerText =
+//     playlistDict.songs[originalIndex][0];
+//   document.getElementById(`artist${positionStr}`).innerText =
+//     playlistDict.songs[originalIndex][1];
+//   document.getElementById(`album${positionStr}`).innerText =
+//     playlistDict.songs[originalIndex][3];
+
+function clearModalSongs() {
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`song${i}_img`).src = "";
+    document.getElementById(`song${i}`).innerText = "";
+    document.getElementById(`artist${i}`).innerText = "";
+    document.getElementById(`album${i}`).innerText = "";
+  }
 }
 
 if (span) {
