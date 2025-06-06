@@ -11,6 +11,8 @@ fetch("./data/data.json")
     const allPlaylists = [...jsonData, ...userPlaylists];
     if (window.location.href.includes("featured.html")) {
       showFeaturedPlaylist(allPlaylists);
+    } else if (window.location.href.includes("edit_playlist.html")) {
+      loadEditPlaylist();
     } else {
       createPlaylistCards(allPlaylists);
     }
@@ -19,6 +21,16 @@ fetch("./data/data.json")
     console.log("Error with fetching data", error);
   });
 
+if (window.location.href.includes("edit_playlist.html")) {
+  const addSongButton = document.getElementById("add_song_btn");
+  const form = document.getElementById("playlistForm");
+  const cancelButton = document.getElementById("cancel_btn");
+
+  addSong();
+  addSongButton.addEventListener("click", addSong);
+  cancelButton.addEventListener("click", cancelPlaylist);
+  form.addEventListener("submit", saveEditedPlaylist);
+}
 if (window.location.href.includes("add_playlist.html")) {
   const addSongButton = document.getElementById("add_song_btn");
   const form = document.getElementById("playlistForm");
@@ -180,6 +192,7 @@ function createPlaylistCards(data) {
     // Create outer div to hold playlist cards
     const outerDiv = document.createElement("div");
     outerDiv.setAttribute("class", `playlist_card`);
+    outerDiv.setAttribute("id", playlist.playlistID);
 
     // Create playlist image
     const img = document.createElement("img");
@@ -267,7 +280,6 @@ function openModal(playlistDict) {
   const songsContainer = document.getElementById("songs_list_container");
   songsContainer.innerHTML = "";
 
-
   if (playlistDict.songs && playlistDict.songs.length > 0) {
     playlistDict.songs.forEach((song) => {
       const songRow = document.createElement("div");
@@ -331,10 +343,77 @@ function shufflePlaylistDisplay(playlistDict) {
     songsContainer.appendChild(songRow);
   });
 }
-function editPlaylist(playlistID){
-    const playlistCard = document.querySelector(`[data-playlist-id="${playlistID}]"`);
+function editPlaylist(playlistID) {
+  const playlistCard = document.querySelector(
+    `[data-playlist-id="${playlistID}]"`
+  );
 }
 
+function loadEditPlaylist() {
+  const playlistID = localStorage.getItem("editPlaylistId");
+  const userPlaylists = JSON.parse(
+    localStorage.getItem("userPlaylists") || "[]"
+  );
+  let playlist = userPlaylists.find((p) => p.playlistID == playlistID);
+  if (playlist) {
+    populateEditForm(playlist);
+  }
+}
+
+function populateEditForm(playlist) {
+  document.getElementById("playlist_name").value = playlist.playlist_name;
+  document.getElementById("playlist_author").value = playlist.playlist_author;
+  document.getElementById("playlist_art").value = playlist.playlist_art;
+  const songsSection = document.getElementById("songs_section");
+  songsSection.innerHTML = "";
+  playlist.songs.forEach((song) => {
+    addSongWithData(song);
+  });
+}
+
+function saveEditedPlaylist() {
+  const playlistID = localStorage.getItem("editPlaylistID");
+  const playlistName = document.getElementsById("playlist_name").value;
+
+  const playlistAuthor = document.getElementsById("playlist_author").value;
+
+  const playlistArt = document.getElementsById("playlist_art").value;
+
+  const songList = document.querySelectorAll(".song");
+  const songs = [];
+  songList.forEach((item) => {
+    const songName = item.querySelector(".song_name").value;
+    const artist = item.querySelector(".artist_name").value;
+    const album = item.querySelector(".album_name").value;
+    const duration = item.querySelector(".duration").value;
+    const art = item.querySelector(".song_art").value;
+    songs.push([songName, artist, album, duration, art]);
+  });
+
+  const currentPlaylists = JSON.parse(
+    localStorage.getItem("userPlaylists") || "[]"
+  );
+  const index = currentPlaylists.findIndex((p) => p.playlistID == playlistID);
+  const updatedPlaylist = {
+    playlistID: playlistID,
+    playlist_name: playlistName,
+    playlist_author: playlistAuthor,
+    playlist_art: playlistArt,
+    songs: songs,
+    likeCount: 0,
+  };
+
+  // Prevent duplicate edited playlists
+  if (index !== -1) {
+    currentPlaylists[index] = updatedPlaylist;
+  } else {
+    currentPlaylists.push(updatedPlaylist);
+  }
+
+  localStorage.setItem("userPlaylists", JSON.stringify(currentPlaylists));
+  localStorage.removeItem("editPlaylistID");
+  window.location.href = "index.html";
+}
 function clearModalSongs() {
   const songsContainer = document.getElementById("songs_list_container");
   if (songsContainer) {
