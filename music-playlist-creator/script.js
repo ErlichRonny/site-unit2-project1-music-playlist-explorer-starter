@@ -2,9 +2,9 @@ const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 let currShuffleFunc = null;
 
+const editingPlaylistId = null;
 let allPlaylists = [];
 let deletedPlaylistsIds = [];
-let editingPlaylistId = null;
 
 fetch("./data/data.json")
   .then((data) => data.json())
@@ -229,8 +229,7 @@ function createPlaylistCards(data) {
     likeDiv.appendChild(editButton);
     editButton.addEventListener("click", function (event) {
       event.stopPropagation();
-      editingPlaylistId = playlist.playlistID;
-      window.location.href = "edit_playlist.html";
+      window.location.href = "edit_playlist.html?id=${playlist.playlistID}";
     });
 
     // Create delete button
@@ -361,6 +360,8 @@ function editPlaylist(playlistID) {
 }
 
 function loadEditPlaylist() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const editingPlaylistId = urlParams.get("id");
   if (!editingPlaylistId) {
     alert("No playlist selected");
     window.location.href = "index.html";
@@ -389,6 +390,8 @@ function populateEditForm(playlist) {
 function saveEditedPlaylist(event) {
   // Prevent page refresh
   event.preventDefault();
+  const urlParams = new URLSearchParams(window.location.search);
+  const editingPlaylistId = urlParams.get("id");
   const playlistName = document.getElementById("playlist_name").value;
 
   const playlistAuthor = document.getElementById("playlist_author").value;
@@ -406,7 +409,9 @@ function saveEditedPlaylist(event) {
     songs.push([songName, artist, album, duration, art]);
   });
 
-  const index = allPlaylists.findIndex((p) => p.playlistID == playlistID);
+  const index = allPlaylists.findIndex(
+    (p) => p.playlistID == editingPlaylistId
+  );
   if (index !== -1) {
     allPlaylists[index] = {
       ...allPlaylists[index],
