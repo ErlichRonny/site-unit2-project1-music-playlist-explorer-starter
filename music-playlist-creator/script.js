@@ -1,5 +1,6 @@
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
+let currShuffleFunc = null;
 
 fetch("./data/data.json")
   .then((data) => data.json())
@@ -48,7 +49,7 @@ function createPlaylist(event) {
   });
 
   const newPlaylist = {
-    playlist_id: Date.now(),
+    playlistID: Date.now(),
     playlist_name: playlistName,
     playlist_author: playlistAuthor,
     playlist_art: playlistArt,
@@ -91,9 +92,10 @@ function addSong() {
 
 function showFeaturedPlaylist(data) {
   if (!Array.isArray(data) || data.length === 0) {
+    const container = document.querySelector(".featured_container");
     const emptyMessage = document.createElement("h3");
     emptyMessage.innerText = "No playlists available";
-    section.appendChild(emptyMessage);
+    container.appendChild(emptyMessage);
     return;
   }
   // Randomly select playlist
@@ -254,7 +256,6 @@ function openModal(playlistDict) {
     document.getElementById("album3").innerText = playlistDict.songs[2][3];
   }
 
-  modal.style.display = "block";
 
   const shuffleButton = document.getElementById("shuffle");
 
@@ -274,7 +275,8 @@ function openModal(playlistDict) {
   };
 
   shuffleButton.addEventListener("click", currShuffleFunc);
-  modal.style.visibility = "visible";
+    modal.style.visibility = "visible";
+
 }
 
 function updatePlaylistPosition(position, originalIndex, playlistDict) {
