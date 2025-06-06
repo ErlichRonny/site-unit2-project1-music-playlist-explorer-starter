@@ -102,6 +102,28 @@ function addSong() {
   container.appendChild(songDiv);
 }
 
+function addSongWithData(song) {
+  const container = document.getElementById("songs_section");
+  const songDiv = document.createElement("div");
+  songDiv.setAttribute("class", "song");
+  songDiv.innerHTML = `
+    <input type="text" placeholder="Song Name" class="song_name" value="${song[0]} required>
+    <input type="text" placeholder="Artist" class="artist_name" value="${song[1]} required>
+    <input type="text" placeholder="Album" class="album_name" value="${song[2]} required>
+    <input type="text" placeholder="Song duration" class="duration" value="${song[3]}required>
+    <input type="url" placeholder="Album Art URL" class="song_art" value="${song[4]}required>
+    <button type="button" class="remove_song_btn"> Remove Song </button>
+    `;
+
+  const removeButton = songDiv.querySelector(".remove_song_btn");
+  removeButton.addEventListener("click", function () {
+    if (container.children.length > 1) {
+      songDiv.remove();
+    }
+  });
+  container.appendChild(songDiv);
+}
+
 function showFeaturedPlaylist(data) {
   if (!Array.isArray(data) || data.length === 0) {
     const container = document.querySelector(".featured_container");
@@ -350,7 +372,7 @@ function editPlaylist(playlistID) {
 }
 
 function loadEditPlaylist() {
-  const playlistID = localStorage.getItem("editPlaylistId");
+  const playlistID = localStorage.getItem("editPlaylistID");
   const userPlaylists = JSON.parse(
     localStorage.getItem("userPlaylists") || "[]"
   );
@@ -371,13 +393,13 @@ function populateEditForm(playlist) {
   });
 }
 
-function saveEditedPlaylist() {
+function saveEditedPlaylist(event) {
   const playlistID = localStorage.getItem("editPlaylistID");
-  const playlistName = document.getElementsById("playlist_name").value;
+  const playlistName = document.getElementById("playlist_name").value;
 
-  const playlistAuthor = document.getElementsById("playlist_author").value;
+  const playlistAuthor = document.getElementById("playlist_author").value;
 
-  const playlistArt = document.getElementsById("playlist_art").value;
+  const playlistArt = document.getElementById("playlist_art").value;
 
   const songList = document.querySelectorAll(".song");
   const songs = [];
@@ -400,7 +422,7 @@ function saveEditedPlaylist() {
     playlist_author: playlistAuthor,
     playlist_art: playlistArt,
     songs: songs,
-    likeCount: 0,
+    likeCount: currentPlaylists[index].likeCount,
   };
 
   // Prevent duplicate edited playlists
