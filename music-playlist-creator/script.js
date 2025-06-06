@@ -236,11 +236,13 @@ function createLikeView(playlist) {
 function openModal(playlistDict) {
   clearModalSongs();
 
-  document.getElementById("playlistTitle").innerText = playlistDict.playlist_name;
-  document.getElementById("creatorName").innerText = playlistDict.playlist_author;
+  document.getElementById("playlistTitle").innerText =
+    playlistDict.playlist_name;
+  document.getElementById("creatorName").innerText =
+    playlistDict.playlist_author;
   document.getElementById("playlist_img").src = playlistDict.playlist_art;
 
-  const songsContainer = document.getElementById("modal_songs");
+  const songsContainer = document.getElementById("songs_list_container");
   songsContainer.innerHTML = "";
 
   if (playlistDict.songs && playlistDict.songs.length > 0) {
@@ -262,20 +264,6 @@ function openModal(playlistDict) {
         `;
       songsContainer.appendChild(songRow);
     });
-    // document.getElementById("song1_img").src = playlistDict.songs[0][4];
-    // document.getElementById("song1").innerText = playlistDict.songs[0][0];
-    // document.getElementById("artist1").innerText = playlistDict.songs[0][1];
-    // document.getElementById("album1").innerText = playlistDict.songs[0][3];
-
-    // document.getElementById("song2_img").src = playlistDict.songs[1][4];
-    // document.getElementById("song2").innerText = playlistDict.songs[1][0];
-    // document.getElementById("artist2").innerText = playlistDict.songs[1][1];
-    // document.getElementById("album2").innerText = playlistDict.songs[1][3];
-
-    // document.getElementById("song3_img").src = playlistDict.songs[2][4];
-    // document.getElementById("song3").innerText = playlistDict.songs[2][0];
-    // document.getElementById("artist3").innerText = playlistDict.songs[2][1];
-    // document.getElementById("album3").innerText = playlistDict.songs[2][3];
   } else {
     songsContainer.innerHTML = "<p> No songs available</p>";
   }
@@ -338,8 +326,10 @@ function updatePlaylistPosition(position, originalIndex, playlistDict) {
 //     playlistDict.songs[originalIndex][3];
 
 function clearModalSongs() {
-  const songsContainer = document.getElementsByClassName("modal_songs");
-  songsContainer.innerHTML = "";
+  const songsContainer = document.getElementById("songs_list_container");
+  if (songsContainer) {
+    songsContainer.innerHTML = "";
+  }
   //   for (let i = 1; i <= 3; i++) {
   //     document.getElementById(`song${i}_img`).src = "";
   //     document.getElementById(`song${i}`).innerText = "";
