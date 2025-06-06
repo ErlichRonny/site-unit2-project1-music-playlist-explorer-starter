@@ -209,9 +209,9 @@ function createPlaylistCards(data) {
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.innerText = "🗑️";
     likeDiv.appendChild(deleteButton);
-    deleteButton.addEventListener("click", function(event){
-        event.stopPropagation(outerDiv.remove());
-    })
+    deleteButton.addEventListener("click", function (event) {
+      event.stopPropagation(outerDiv.remove());
+    });
   });
 }
 
@@ -339,3 +339,14 @@ if (modal) {
     }
   };
 }
+
+const searchBar = document.querySelector("#search-bar");
+searchBar.addEventListener("keypress", function(){
+    
+});
+
+const searchClearBtn = document.querySelector("#search-clear");
+searchClearBtn.addEventListener("click", function(){
+    searchBar.value = "";
+    console.log("clear search bar");
+})

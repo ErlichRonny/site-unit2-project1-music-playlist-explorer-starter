@@ -284,3 +284,16 @@ footer {
   display: block;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
+.search-bar-div {
+  display: flex;
+  justify-content: center;
+}
+
+#search-bar {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  width: 400px;
+}
