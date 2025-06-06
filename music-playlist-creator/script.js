@@ -211,6 +211,8 @@ function createPlaylistCards(data) {
     likeDiv.appendChild(editButton);
     editButton.addEventListener("click", function (event) {
       event.stopPropagation();
+      localStorage.setItem("editPlaylistID", playlist.playlistID);
+      window.location.href = "edit_playlist.html";
     });
 
     // Create delete button
@@ -264,6 +266,7 @@ function openModal(playlistDict) {
 
   const songsContainer = document.getElementById("songs_list_container");
   songsContainer.innerHTML = "";
+
 
   if (playlistDict.songs && playlistDict.songs.length > 0) {
     playlistDict.songs.forEach((song) => {
@@ -327,6 +330,9 @@ function shufflePlaylistDisplay(playlistDict) {
     `;
     songsContainer.appendChild(songRow);
   });
+}
+function editPlaylist(playlistID){
+    const playlistCard = document.querySelector(`[data-playlist-id="${playlistID}]"`);
 }
 
 function clearModalSongs() {

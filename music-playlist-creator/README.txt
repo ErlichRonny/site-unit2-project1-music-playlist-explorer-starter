@@ -97,9 +97,9 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
     - [ ] Editing all of a playlist's features (name, creator, AND songs)
     - [ ] Editing some of a playlist's features (name, creator, OR songs) 
 
-- [ ] **Delete Playlists**
-  - [ ] Add a delete button to each playlist tile within the grid view.
-  - [ ] When clicked, the playlist is removed from the playlist grid view.
+- [x] **Delete Playlists**
+  - [x] Add a delete button to each playlist tile within the grid view.
+  - [x] When clicked, the playlist is removed from the playlist grid view.
 
 - [ ] **Search Functionality**
   - [ ] Implement a search bar that allows users to filter playlists by:
