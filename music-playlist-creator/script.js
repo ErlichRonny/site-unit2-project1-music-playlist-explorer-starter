@@ -255,10 +255,9 @@ function openModal(playlistDict) {
          <div>
             <h1 id="playlistTitle"></h1>
             <h2 id="creatorName"></h2>
-            <button id="shuffle">Shuffle</button>
-                <h3 id="${song[0]}"></h3>
-                <p id="${song[1]}"></p>
-                <p id="${song[3]}"></p>
+                <h3 id="${song[0]}"> ${song[0]} </h3>
+                <p id="${song[1]}">${song[1]}</p>
+                <p id="${song[3]}">${song[3]}</p>
          </div>
          </div>
         `;
@@ -273,29 +272,28 @@ function openModal(playlistDict) {
   if (currShuffleFunc) {
     shuffleButton.removeEventListener("click", currShuffleFunc);
   }
-
   currShuffleFunc = function () {
-    let indices = [0, 1, 2];
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-    indices.forEach((originalIndex, newPosition) => {
-      updatePlaylistPosition(newPosition, originalIndex, playlistDict);
-    });
+    shufflePlaylistDisplay();
   };
 
   shuffleButton.addEventListener("click", currShuffleFunc);
   modal.style.display = "block";
 }
 
-function updatePlaylistPosition(position, originalIndex, playlistDict) {
-  const songsContainer = document.getElementById("modal_songs");
-  const song = playlistDict.songs[originalIndex];
-  const songRow = document.createElement("div");
-  songRow.setAttribute("class", "playlist_card");
+function shufflePlaylistDisplay(playlistDict) {
+  const songsContainer = document.getElementById("songs_list_container");
+  let indices = [0, 1, 2];
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  songsContainer.innerHTML = "";
+  indices.forEach((originalIndex, newPosition) => {
+    const song = playlistDict.songs[originalIndex];
+    const songRow = document.createElement("div");
+    songRow.setAttribute("class", "playlist_card");
 
-  songRow.innerHTML = `
+    songRow.innerHTML = `
     <div class="song_modal">
     <img id="playlist_card" src="${song[4]}" width="200" height="200"/>
     <div>
@@ -308,34 +306,15 @@ function updatePlaylistPosition(position, originalIndex, playlistDict) {
     </div>
     </div>
     `;
-  const oldRow = songsContainer.children[position];
-  if (oldRow) {
-    songsContainer.replaceChild(songRow, oldRow);
-  }
+    songsContainer.appendChild(songRow);
+  });
 }
-
-//   const positionStr = (position + 1).toString();
-//   console.log(playlistDict.songs[originalIndex][4]);
-//   document.getElementById(`song${positionStr}_img`).src =
-//     playlistDict.songs[originalIndex][4];
-//   document.getElementById(`song${positionStr}`).innerText =
-//     playlistDict.songs[originalIndex][0];
-//   document.getElementById(`artist${positionStr}`).innerText =
-//     playlistDict.songs[originalIndex][1];
-//   document.getElementById(`album${positionStr}`).innerText =
-//     playlistDict.songs[originalIndex][3];
 
 function clearModalSongs() {
   const songsContainer = document.getElementById("songs_list_container");
   if (songsContainer) {
     songsContainer.innerHTML = "";
   }
-  //   for (let i = 1; i <= 3; i++) {
-  //     document.getElementById(`song${i}_img`).src = "";
-  //     document.getElementById(`song${i}`).innerText = "";
-  //     document.getElementById(`artist${i}`).innerText = "";
-  //     document.getElementById(`album${i}`).innerText = "";
-  //   }
 }
 
 if (span) {
