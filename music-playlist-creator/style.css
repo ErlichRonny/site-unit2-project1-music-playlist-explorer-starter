@@ -7,11 +7,12 @@ body {
 header {
   color: #dd7575;
   background-color: #ebc2c2;
+  font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   position: sticky;
-  padding: 15px 10px 15px 10px;
+  padding: 20px 40px;
 }
 
 footer {
@@ -147,28 +148,30 @@ footer {
 }
 
 .button-class {
-  padding: 15px 40px;
+  margin-top: 30px;
   border: none;
   color: #dd7575;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .container {
   display: flex;
   padding: 20px;
   margin: 20px auto;
+  justify-content: center;
 }
 
 .featured_container {
-  display: grid;
-  grid-gap: 200px;
+  display: flex;
+  justify-content: center;
+  gap: 500px;
   width: 100%;
-  grid-template-columns: 350px 600px;
-  margin-left: 150px;
-  align-items: start;
+  align-items: flex-start;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
 .featured_left {
@@ -176,12 +179,11 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-left: 300px;
 }
 
 .featured_playlist_img {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   object-fit: cover;
   border-radius: 12px;
@@ -201,6 +203,8 @@ footer {
   flex-direction: column;
   padding-left: 40px;
   margin-left: 20px;
+  flex: 1;
+  max-width: 700px;
 }
 
 .featured_song_info {
@@ -220,6 +224,7 @@ footer {
   padding: 15px;
   background-color: #eb9f9f;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 .featured_song:hover {
@@ -232,4 +237,8 @@ footer {
 
 .featured_artist {
   font-size: 17px;
+}
+
+.featured_song_img {
+  margin-right: 15px;
 }
