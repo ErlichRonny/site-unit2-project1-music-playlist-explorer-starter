@@ -236,10 +236,8 @@ function createLikeView(playlist) {
 function openModal(playlistDict) {
   clearModalSongs();
 
-  document.getElementById("playlistTitle").innerText =
-    playlistDict.playlist_name;
-  document.getElementById("creatorName").innerText =
-    playlistDict.playlist_author;
+  document.getElementById("playlistTitle").innerText = playlistDict.playlist_name;
+  document.getElementById("creatorName").innerText = playlistDict.playlist_author;
   document.getElementById("playlist_img").src = playlistDict.playlist_art;
 
   const songsContainer = document.getElementById("modal_songs");
@@ -250,7 +248,7 @@ function openModal(playlistDict) {
       const songRow = document.createElement("div");
       songRow.setAttribute("class", "playlist_card");
       songRow.innerHTML = `
-         <div class="song_modal" id="${song_id}">
+         <div class="song_modal">
         <img id="playlist_card" src="${song[4]}" width="200" height="200"/>
          <div>
             <h1 id="playlistTitle"></h1>
@@ -310,8 +308,8 @@ function updatePlaylistPosition(position, originalIndex, playlistDict) {
   songRow.setAttribute("class", "playlist_card");
 
   songRow.innerHTML = `
-    <div class="song_modal" id="${song_id}">
-<img id="playlist_card" src="${song[4]}" width="200" height="200"/>
+    <div class="song_modal">
+    <img id="playlist_card" src="${song[4]}" width="200" height="200"/>
     <div>
     <h1 id="playlistTitle"></h1>
     <h2 id="creatorName"></h2>
@@ -340,12 +338,14 @@ function updatePlaylistPosition(position, originalIndex, playlistDict) {
 //     playlistDict.songs[originalIndex][3];
 
 function clearModalSongs() {
-  for (let i = 1; i <= 3; i++) {
-    document.getElementById(`song${i}_img`).src = "";
-    document.getElementById(`song${i}`).innerText = "";
-    document.getElementById(`artist${i}`).innerText = "";
-    document.getElementById(`album${i}`).innerText = "";
-  }
+  const songsContainer = document.getElementsByClassName("modal_songs");
+  songsContainer.innerHTML = "";
+  //   for (let i = 1; i <= 3; i++) {
+  //     document.getElementById(`song${i}_img`).src = "";
+  //     document.getElementById(`song${i}`).innerText = "";
+  //     document.getElementById(`artist${i}`).innerText = "";
+  //     document.getElementById(`album${i}`).innerText = "";
+  //   }
 }
 
 if (span) {
