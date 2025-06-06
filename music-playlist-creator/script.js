@@ -19,36 +19,35 @@ function createPlaylistCards(data) {
     emptyMessage.innerText = "No playlists added";
     section.appendChild(emptyMessage);
     return;
-  } else if (Array.isArray(data)) {
-    data.forEach((playlist) => {
-      // Create outer div to hold playlist cards
-      const outerDiv = document.createElement("div");
-      outerDiv.setAttribute("class", `playlist_card`);
-
-      // Create playlist image
-      const img = document.createElement("img");
-      img.setAttribute("src", playlist.playlist_art);
-      img.setAttribute("width", "200");
-      img.setAttribute("height", "200");
-      outerDiv.appendChild(img);
-      // Create playlist title
-      const playlistTitle = document.createElement("h3");
-      playlistTitle.innerText = playlist.playlist_name;
-      outerDiv.appendChild(playlistTitle);
-      // Create playlist creator name
-      const creatorName = document.createElement("p");
-      creatorName.innerText = playlist.playlist_author;
-      outerDiv.appendChild(creatorName);
-
-      // Create like button and number
-      likeDiv = createLikeView(playlist);
-      outerDiv.appendChild(likeDiv);
-      section.appendChild(outerDiv);
-      outerDiv.addEventListener("click", function () {
-        openModal(playlist);
-      });
-    });
   }
+  data.forEach((playlist) => {
+    // Create outer div to hold playlist cards
+    const outerDiv = document.createElement("div");
+    outerDiv.setAttribute("class", `playlist_card`);
+
+    // Create playlist image
+    const img = document.createElement("img");
+    img.setAttribute("src", playlist.playlist_art);
+    img.setAttribute("width", "200");
+    img.setAttribute("height", "200");
+    outerDiv.appendChild(img);
+    // Create playlist title
+    const playlistTitle = document.createElement("h3");
+    playlistTitle.innerText = playlist.playlist_name;
+    outerDiv.appendChild(playlistTitle);
+    // Create playlist creator name
+    const creatorName = document.createElement("p");
+    creatorName.innerText = playlist.playlist_author;
+    outerDiv.appendChild(creatorName);
+
+    // Create like button and number
+    const likeDiv = createLikeView(playlist);
+    outerDiv.appendChild(likeDiv);
+    section.appendChild(outerDiv);
+    outerDiv.addEventListener("click", function () {
+      openModal(playlist);
+    });
+  });
 }
 
 function createLikeView(playlist) {
@@ -59,18 +58,17 @@ function createLikeView(playlist) {
   likeDiv.appendChild(likeButton);
   let likeClicked = false;
   likeButton.addEventListener("click", function (event) {
+    event.stopPropagation();
     if (likeClicked === false) {
       likeClicked = true;
       const currentLikes = parseInt(likeCount.innerText);
       likeCount.innerText = currentLikes + 1;
       likeButton.innerText = "❤️";
-      event.stopPropagation();
     } else {
       likeClicked = false;
       const currentLikes = parseInt(likeCount.innerText);
       likeCount.innerText = currentLikes - 1;
       likeButton.innerText = "♡ ";
-      event.stopPropagation();
     }
   });
   const likeCount = document.createElement("p");
@@ -85,19 +83,22 @@ function openModal(playlistDict) {
   document.getElementById("creatorName").innerText =
     playlistDict.playlist_author;
   document.getElementById("playlist_img").src = playlistDict.playlist_art;
-  document.getElementById("song1_img").src = playlistDict.songs[0][4];
-  document.getElementById("song1").innerText = playlistDict.songs[0][0];
-  document.getElementById("artist1").innerText = playlistDict.songs[0][1];
-  document.getElementById("album1").innerText = playlistDict.songs[0][3];
+  if (playlistDict.songs && playlistDict.songs.length >= 3) {
+    document.getElementById("song1_img").src = playlistDict.songs[0][4];
+    document.getElementById("song1").innerText = playlistDict.songs[0][0];
+    document.getElementById("artist1").innerText = playlistDict.songs[0][1];
+    document.getElementById("album1").innerText = playlistDict.songs[0][3];
 
-  document.getElementById("song2_img").src = playlistDict.songs[1][4];
-  document.getElementById("song2").innerText = playlistDict.songs[1][0];
-  document.getElementById("artist2").innerText = playlistDict.songs[1][1];
-  document.getElementById("album2").innerText = playlistDict.songs[1][3];
+    document.getElementById("song2_img").src = playlistDict.songs[1][4];
+    document.getElementById("song2").innerText = playlistDict.songs[1][0];
+    document.getElementById("artist2").innerText = playlistDict.songs[1][1];
+    document.getElementById("album2").innerText = playlistDict.songs[1][3];
 
-  document.getElementById("song3_img").src = playlistDict.songs[2][4];
-  document.getElementById("song3").innerText = playlistDict.songs[2][0];
-  document.getElementById("artist3").innerText = playlistDict.songs[2][1];
+    document.getElementById("song3_img").src = playlistDict.songs[2][4];
+    document.getElementById("song3").innerText = playlistDict.songs[2][0];
+    document.getElementById("artist3").innerText = playlistDict.songs[2][1];
+  }
+
   modal.style.display = "block";
 
   const shuffleButton = document.getElementById("shuffle");
@@ -106,12 +107,13 @@ function openModal(playlistDict) {
 
 function shuffleLogic(shuffleButton, playlistDict) {
   shuffleButton.addEventListener("click", function () {
-    let songsList = new Set();
-    while (songsList.size < 3) {
-      songsList.add(Math.floor(Math.random() * 3));
+    //  let songsList = new Set();
+    let indices = [0, 1, 2];
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
     }
-    const shuffledArray = Array.from(songsList);
-    shuffledArray.forEach((originalIndex, newPosition) => {
+    indices.forEach((originalIndex, newPosition) => {
       updatePlaylistPosition(newPosition, originalIndex, playlistDict);
     });
   });
