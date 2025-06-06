@@ -2,7 +2,6 @@ const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 let currShuffleFunc = null;
 
-const editingPlaylistId = null;
 let allPlaylists = [];
 let deletedPlaylistsIds = [];
 
@@ -229,7 +228,7 @@ function createPlaylistCards(data) {
     likeDiv.appendChild(editButton);
     editButton.addEventListener("click", function (event) {
       event.stopPropagation();
-      window.location.href = "edit_playlist.html?id=${playlist.playlistID}";
+      window.location.href = `edit_playlist.html?id=${playlist.playlistID}`;
     });
 
     // Create delete button
