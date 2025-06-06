@@ -8,7 +8,15 @@ fetch("./data/data.json")
     const userPlaylists = JSON.parse(
       localStorage.getItem("userPlaylists") || "[]"
     );
-    const allPlaylists = [...jsonData, ...userPlaylists];
+
+    const editedIDs = userPlaylists.map((p) => p.playlistID);
+
+    const originalPlaylists = jsonData.filter(
+      (p) => !editedIDs.includes(p.playlistID)
+    );
+
+    const allPlaylists = [...userPlaylists, ...jsonData];
+
     if (window.location.href.includes("featured.html")) {
       showFeaturedPlaylist(allPlaylists);
     } else if (window.location.href.includes("edit_playlist.html")) {
@@ -443,7 +451,7 @@ function saveEditedPlaylist(event) {
     playlist_author: playlistAuthor,
     playlist_art: playlistArt,
     songs: songs,
-    like_count: currentPlaylists[index].likeCount,
+    like_count: 0,
   };
 
   // Prevent duplicate edited playlists
