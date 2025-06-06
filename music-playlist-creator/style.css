@@ -158,35 +158,65 @@ footer {
 
 .container {
   display: flex;
+  padding: 20px;
+  margin: 20px auto;
 }
-
-.imgSection {
+.featured_container {
   display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.featured_left {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.featuredPlaylistImg {
+.featured_playlist_img {
   width: 300px;
   height: 300px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  border-radius: 12px;
 }
 
-.featuredPlaylistTitle {
+.featured_playlist_title {
   font-weight: bold;
-  font-size: large;
+  font-size: 30px;
 }
 
-.playlistSection {
+.featured_playlist_author {
+  font-size: 20px;
+}
+
+.featured_right {
+  flex: 2;
+  padding-left: 20px;
+}
+
+.featured_songs_list {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
-.featured_song{
+.featured_song {
   display: flex;
   align-items: center;
+  padding: 15px;
+  background-color: #eb9f9f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.featured_song:hover{
-  background-color: #048f5c;
+.featured_song:hover {
+  background-color: #dd7575;
+}
+
+.featured_song_name {
+  font-size: 20px;
+}
+
+.featured_artist{
+   font-size: 17px;
 }

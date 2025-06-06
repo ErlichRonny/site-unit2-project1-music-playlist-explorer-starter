@@ -65,15 +65,15 @@ function showFeaturedPlaylist(data) {
       songDiv.setAttribute("class", "featured_song_info");
 
       const songName = document.createElement("h3");
-      songName.innerText = featured_song[0];
+      songName.innerText = song[0];
       songName.setAttribute("class", "featured_song_name");
 
       const artistName = document.createElement("p");
-      artistName.innerText = featured_song[1];
+      artistName.innerText = song[1];
       artistName.setAttribute("class", "featured_artist");
 
       const albumName = document.createElement("p");
-      albumName.innerText = featured_song[3];
+      albumName.innerText = song[3];
       albumName.setAttribute("class", "featured_album");
 
       songDiv.appendChild(songName);
