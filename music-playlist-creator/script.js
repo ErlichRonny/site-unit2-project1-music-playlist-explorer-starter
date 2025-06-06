@@ -4,15 +4,87 @@ const span = document.getElementsByClassName("close")[0];
 fetch("./data/data.json")
   .then((data) => data.json())
   .then((jsonData) => {
+    const userPlaylists = JSON.parse(
+      localStorage.getItem("userPlaylists") || "[]"
+    );
+    const allPlaylists = [...jsonData, ...userPlaylists];
     if (window.location.href.includes("featured.html")) {
-      showFeaturedPlaylist(jsonData);
+      showFeaturedPlaylist(allPlaylists);
     } else {
-      createPlaylistCards(jsonData);
+      createPlaylistCards(allPlaylists);
     }
   })
   .catch((error) => {
     console.log("Error with fetching data", error);
   });
+
+if (window.location.href.includes("add_playlist.html")) {
+  const addSongButton = document.getElementById("add_song_btn");
+  const form = document.getElementById("playlistForm");
+  const cancelButton =  document.getElementById("cancel_btn");
+  addSongButton.addEventListener("click", addSong);
+  cancelButton.addEventListener("click", cancelPlaylist);
+  form.addEventListener("submit", createPlaylist);
+}
+
+function createPlaylist() {
+  const playlistName = document.getElementById("playlist_name").value;
+  const playlistAuthor = document.getElementById("playlist_author").value;
+  const playlistArt = document.getElementById("playlist_art").value;
+
+  const songList = document.querySelectorAll(".song");
+  const songs = [];
+  songsList.forEach((item) => {
+    const songName = item.querySelector(".song_name").value;
+    const artist = item.querySelector(".artist_name").value;
+    const album = item.querySelector(".album_name").value;
+    const duration = item.querySelector(".song_duration").value;
+    const art = item.querySelector(".song_art").value;
+    songs.push([songName, artist, album, duration, art]);
+  });
+
+  const newPlaylist = {
+    playlist_id: Date.now(),
+    playlist_name: playlistName,
+    playlist_author: playlistAuthor,
+    playlist_art: playlistArt,
+    songs: songs,
+    like_count: 0,
+  };
+
+  const currentPlaylists = JSON.parse(
+    localStorage.getItem("userPlaylists") || "[]"
+  );
+  currentPlaylists.push(newPlaylist);
+  localStorage.setItem("userPlaylists", JSON.stringify(currentPlaylists));
+  window.location.href = "index.html";
+}
+
+function cancelPlaylist(){
+    window.location.href = "index.html";
+}
+
+function addSong() {
+  const container = document.getElementById("songs_section");
+  const songDiv = document.createElement("div");
+  songDiv.setAttribute("class", "song");
+  songDiv.innerHTML = `
+    <input type="text" placeholder="Song Name" class="song_name" required>
+    <input type="text" placeholder="Artist" class="artist_name" required>
+    <input type="text" placeholder="Album" class="album_name" required>
+    <input type="text" placeholder="Song duration" class="duration" required>
+    <input type="url" placeholder="Album Art URL" class="song_art" required>
+    <button type="button" onclick="removeSong(song_name)"> Remove </button>
+    `;
+  container.appendChild(songDiv);
+}
+
+function removeSong(button) {
+  const container = document.getElementById("songs_section");
+  if (container.children.length > 1) {
+    button.parentElement.remove();
+  }
+}
 
 function showFeaturedPlaylist(data) {
   if (!Array.isArray(data) || data.length === 0) {
