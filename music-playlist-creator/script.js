@@ -21,7 +21,7 @@ fetch("./data/data.json")
 if (window.location.href.includes("add_playlist.html")) {
   const addSongButton = document.getElementById("add_song_btn");
   const form = document.getElementById("playlistForm");
-  const cancelButton =  document.getElementById("cancel_btn");
+  const cancelButton = document.getElementById("cancel_btn");
   addSongButton.addEventListener("click", addSong);
   cancelButton.addEventListener("click", cancelPlaylist);
   form.addEventListener("submit", createPlaylist);
@@ -51,7 +51,6 @@ function createPlaylist() {
     songs: songs,
     like_count: 0,
   };
-
   const currentPlaylists = JSON.parse(
     localStorage.getItem("userPlaylists") || "[]"
   );
@@ -60,8 +59,8 @@ function createPlaylist() {
   window.location.href = "index.html";
 }
 
-function cancelPlaylist(){
-    window.location.href = "index.html";
+function cancelPlaylist() {
+  window.location.href = "index.html";
 }
 
 function addSong() {
@@ -74,16 +73,16 @@ function addSong() {
     <input type="text" placeholder="Album" class="album_name" required>
     <input type="text" placeholder="Song duration" class="duration" required>
     <input type="url" placeholder="Album Art URL" class="song_art" required>
-    <button type="button" onclick="removeSong(song_name)"> Remove </button>
+    <button type="button" class="remove_song_btn"> Remove Song </button>
     `;
-  container.appendChild(songDiv);
-}
 
-function removeSong(button) {
-  const container = document.getElementById("songs_section");
-  if (container.children.length > 1) {
-    button.parentElement.remove();
-  }
+  const removeButton = songDiv.querySelector(".remove_song_btn");
+  removeButton.addEventListener("click", function () {
+    if (container.children.length > 1) {
+      songDiv.remove();
+    }
+  });
+  container.appendChild(songDiv);
 }
 
 function showFeaturedPlaylist(data) {
