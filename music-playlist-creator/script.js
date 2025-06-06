@@ -1,14 +1,16 @@
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
-let currShuffleFunc = null;
 
+let currShuffleFunc = null;
+let allPlaylists = [];
+let currentSearchTerm = "";
 fetch("./data/data.json")
   .then((data) => data.json())
   .then((jsonData) => {
     const userPlaylists = JSON.parse(
       localStorage.getItem("userPlaylists") || "[]"
     );
-    const allPlaylists = [...jsonData, ...userPlaylists];
+    allPlaylists = [...jsonData, ...userPlaylists];
     if (window.location.href.includes("featured.html")) {
       showFeaturedPlaylist(allPlaylists);
     } else {
@@ -292,11 +294,15 @@ function openModal(playlistDict) {
 
 function shufflePlaylistDisplay(playlistDict) {
   const songsContainer = document.getElementById("songs_list_container");
-  let indices = [0, 1, 2];
+  let indices = [];
+  for (let i = 0; i < playlistDict.songs.length; i++) {
+    indices.push(i);
+  }
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
+
   songsContainer.innerHTML = "";
   indices.forEach((originalIndex, newPosition) => {
     const song = playlistDict.songs[originalIndex];
@@ -340,13 +346,50 @@ if (modal) {
   };
 }
 
-const searchBar = document.querySelector("#search-bar");
-searchBar.addEventListener("keypress", function(){
-    
+searchBar.addEventListener("keypress", function () {
+  console.log("typing");
+  const userPlaylists = JSON.parse(
+    localStorage.getItem("userPlaylists") || "[]"
+  );
+  handleSearch();
 });
 
 const searchClearBtn = document.querySelector("#search-clear");
-searchClearBtn.addEventListener("click", function(){
-    searchBar.value = "";
-    console.log("clear search bar");
-})
+searchClearBtn.addEventListener("click", function () {
+  searchBar.value = "";
+  console.log("clear search bar");
+});
+
+function handleSearch() {
+  const searchBar = document.querySelector("#search-bar");
+  currentSearchTerm = searchBar.value;
+  const filteredPlaylists = filterPlaylists(currentSearchTerm);
+
+  const section = document.querySelector(".playlist_cards");
+  section.innerHTML = "";
+  if (currentSearchTerm.trim() !== "") {
+    const searchDiv = document.createElement("div");
+    searchDiv.className = "search-results";
+    section.append(searchDiv);
+  }
+  console.log(currentSearchTerm);
+  createPlaylistCards(playlists);
+}
+
+function filterPlaylists(searchTerm) {
+  if (!searchTerm) {
+    return allPlaylists;
+  }
+  const searchTrimmed = searchTerm.toLowerCase().trim();
+  // Search playlist name
+  return allPlaylists.filter((playlist) => {
+    if (playlist.playlist_name.toLowerCase().includes(searchTrimmed)) {
+      return true;
+    }
+
+    // Search author name
+    if (playlist.playlist_name.toLowerCase().includes(searchTrimmed)) {
+      return true;
+    }
+  });
+}
