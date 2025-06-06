@@ -346,17 +346,29 @@ if (modal) {
   };
 }
 
-searchBar.addEventListener("keypress", function () {
+const searchBar = document.querySelector("#search-bar");
+const searchClearBtn = document.querySelector("#search-clear");
+const searchSubmit = document.querySelector("#search-submit");
+
+searchSubmit.addEventListener("click", function () {
   console.log("typing");
-  const userPlaylists = JSON.parse(
-    localStorage.getItem("userPlaylists") || "[]"
-  );
   handleSearch();
 });
 
-const searchClearBtn = document.querySelector("#search-clear");
+searchBar.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    console.log("typing");
+
+    handleSearch();
+  }
+});
+
 searchClearBtn.addEventListener("click", function () {
   searchBar.value = "";
+  currentSearchTerm = "";
+  const section = document.querySelector(".playlist_cards");
+  section.innerHTML = "";
+  createPlaylistCards(allPlaylists);
   console.log("clear search bar");
 });
 
@@ -372,8 +384,7 @@ function handleSearch() {
     searchDiv.className = "search-results";
     section.append(searchDiv);
   }
-  console.log(currentSearchTerm);
-  createPlaylistCards(playlists);
+  createPlaylistCards(filteredPlaylists);
 }
 
 function filterPlaylists(searchTerm) {
@@ -381,6 +392,7 @@ function filterPlaylists(searchTerm) {
     return allPlaylists;
   }
   const searchTrimmed = searchTerm.toLowerCase().trim();
+
   // Search playlist name
   return allPlaylists.filter((playlist) => {
     if (playlist.playlist_name.toLowerCase().includes(searchTrimmed)) {
@@ -388,7 +400,7 @@ function filterPlaylists(searchTerm) {
     }
 
     // Search author name
-    if (playlist.playlist_name.toLowerCase().includes(searchTrimmed)) {
+    if (playlist.playlist_author.toLowerCase().includes(searchTrimmed)) {
       return true;
     }
   });
