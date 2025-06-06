@@ -4,17 +4,96 @@ const span = document.getElementsByClassName("close")[0];
 fetch("./data/data.json")
   .then((data) => data.json())
   .then((jsonData) => {
-    createPlaylistCards(jsonData);
+    if (window.location.href.includes("featured.html")) {
+      showFeaturedPlaylist(jsonData);
+    } else {
+      createPlaylistCards(jsonData);
+    }
   })
   .catch((error) => {
     console.log("Error with fetching data", error);
   });
 
+function showFeaturedPlaylist(data) {
+  if (!Array.isArray(data) || data.length === 0) {
+    const emptyMessage = document.createElement("h3");
+    emptyMessage.innerText = "No playlists available";
+    section.appendChild(emptyMessage);
+    return;
+  }
+  // Randomly select playlist
+  const randomIndex = Math.floor(Math.random() * data.length);
+  const featuredPlaylist = data[randomIndex];
+
+  const container = document.querySelector(".featured_container");
+  container.innerHTML = "";
+
+  const imgSection = document.createElement("div");
+  imgSection.setAttribute("class", "featured_left");
+  const featuredPlaylistImg = document.createElement("img");
+  featuredPlaylistImg.setAttribute("src", featuredPlaylist.playlist_art);
+  featuredPlaylistImg.setAttribute("class", "featured_playlist_img");
+
+  const featuredPlaylistTitle = document.createElement("h1");
+  featuredPlaylistTitle.innerText = featuredPlaylist.playlist_name;
+  featuredPlaylistTitle.setAttribute("class", "featured_playlist_title");
+
+  const featuredPlaylistAuthor = document.createElement("p");
+  featuredPlaylistAuthor.innerText = featuredPlaylist.playlist_author;
+  featuredPlaylistAuthor.setAttribute("class", "featured_playlist_author");
+
+  imgSection.appendChild(featuredPlaylistImg);
+  imgSection.appendChild(featuredPlaylistAuthor);
+  imgSection.appendChild(featuredPlaylistTitle);
+
+  // Create right section
+  const playlistSection = document.createElement("div");
+  playlistSection.setAttribute("class", "featured_right");
+
+  if (featuredPlaylist.songs && featuredPlaylist.songs.length > 0) {
+    const songsList = document.createElement("div");
+    songsList.setAttribute("class", "featured_songs_list");
+    featuredPlaylist.songs.forEach((song, index) => {
+      const featured_song = document.createElement("div");
+      featured_song.setAttribute("class", "featured_song");
+
+      const songImg = document.createElement("img");
+      songImg.setAttribute("src", song[4]);
+      songImg.setAttribute("class", "featured_song_img");
+
+      const songDiv = document.createElement("div");
+      songDiv.setAttribute("class", "featured_song_info");
+
+      const songName = document.createElement("h3");
+      songName.innerText = featured_song[0];
+      songName.setAttribute("class", "featured_song_name");
+
+      const artistName = document.createElement("p");
+      artistName.innerText = featured_song[1];
+      artistName.setAttribute("class", "featured_artist");
+
+      const albumName = document.createElement("p");
+      albumName.innerText = featured_song[3];
+      albumName.setAttribute("class", "featured_album");
+
+      songDiv.appendChild(songName);
+      songDiv.appendChild(artistName);
+      songDiv.appendChild(albumName);
+
+      featured_song.appendChild(songImg);
+      featured_song.appendChild(songDiv);
+      songsList.appendChild(featured_song);
+    });
+    playlistSection.appendChild(songsList);
+  }
+  container.appendChild(imgSection);
+  container.appendChild(playlistSection);
+}
+
 function createPlaylistCards(data) {
   const section = document.querySelector(".playlist_cards");
 
   if (!Array.isArray(data) || data.length === 0) {
-    console.log(Array.isArray(data));
     const emptyMessage = document.createElement("h3");
     emptyMessage.innerText = "No playlists added";
     section.appendChild(emptyMessage);
@@ -132,11 +211,16 @@ function updatePlaylistPosition(position, originalIndex, playlistDict) {
     playlistDict.songs[originalIndex][3];
 }
 
-span.onclick = function () {
-  modal.style.display = "none";
-};
-window.onclick = function (event) {
-  if (event.target == modal) {
+if (span) {
+  span.onclick = function () {
     modal.style.display = "none";
-  }
-};
+  };
+}
+
+if (modal) {
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}

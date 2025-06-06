@@ -155,3 +155,38 @@ footer {
   display: inline-block;
   font-size: 20px;
 }
+
+.container {
+  display: flex;
+}
+
+.imgSection {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.featuredPlaylistImg {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.featuredPlaylistTitle {
+  font-weight: bold;
+  font-size: large;
+}
+
+.playlistSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured_song{
+  display: flex;
+  align-items: center;
+}
+
+.featured_song:hover{
+  background-color: #048f5c;
+}
