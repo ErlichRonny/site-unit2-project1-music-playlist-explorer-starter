@@ -2,20 +2,13 @@ const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 let currShuffleFunc = null;
 
+let allPlaylists = [];
+let deletedPlaylistsIds = [];
+
 fetch("./data/data.json")
   .then((data) => data.json())
   .then((jsonData) => {
-    const userPlaylists = JSON.parse(
-      localStorage.getItem("userPlaylists") || "[]"
-    );
-
-    const editedIDs = userPlaylists.map((p) => p.playlistID);
-
-    const originalPlaylists = jsonData.filter(
-      (p) => !editedIDs.includes(p.playlistID)
-    );
-
-    const allPlaylists = [...userPlaylists, ...jsonData];
+    allPlaylists = [...jsonData];
 
     if (window.location.href.includes("featured.html")) {
       showFeaturedPlaylist(allPlaylists);
@@ -29,26 +22,10 @@ fetch("./data/data.json")
     console.log("Error with fetching data", error);
   });
 
-if (window.location.href.includes("edit_playlist.html")) {
-  const addSongButton = document.getElementById("add_song_btn");
-  const form = document.getElementById("playlistForm");
-  const cancelButton = document.getElementById("cancel_btn");
-
-  addSong();
-  addSongButton.addEventListener("click", addSong);
-  cancelButton.addEventListener("click", cancelPlaylist);
-  form.addEventListener("submit", saveEditedPlaylist);
-}
-if (window.location.href.includes("add_playlist.html")) {
-  const addSongButton = document.getElementById("add_song_btn");
-  const form = document.getElementById("playlistForm");
-  const cancelButton = document.getElementById("cancel_btn");
-
-  addSong();
-
-  addSongButton.addEventListener("click", addSong);
-  cancelButton.addEventListener("click", cancelPlaylist);
-  form.addEventListener("submit", createPlaylist);
+function getVisiblePlaylists() {
+  return allPlaylists.filter(
+    (playlist) => !deletedPlaylistsIds.includes(playlist.playlistID.toString())
+  );
 }
 
 function createPlaylist(event) {
@@ -76,11 +53,7 @@ function createPlaylist(event) {
     songs: songs,
     like_count: 0,
   };
-  const currentPlaylists = JSON.parse(
-    localStorage.getItem("userPlaylists") || "[]"
-  );
-  currentPlaylists.push(newPlaylist);
-  localStorage.setItem("userPlaylists", JSON.stringify(currentPlaylists));
+  allPlaylists.push(newPlaylist);
   window.location.href = "index.html";
 }
 
@@ -255,7 +228,6 @@ function createPlaylistCards(data) {
     likeDiv.appendChild(editButton);
     editButton.addEventListener("click", function (event) {
       event.stopPropagation();
-      localStorage.setItem("editPlaylistID", playlist.playlistID);
       window.location.href = "edit_playlist.html";
     });
 
@@ -266,7 +238,8 @@ function createPlaylistCards(data) {
     likeDiv.appendChild(deleteButton);
     deleteButton.addEventListener("click", function (event) {
       event.stopPropagation();
-      outerDiv.remove();
+      deletedPlaylistsIds.push(playlist);
+      
     });
   });
 }
@@ -384,28 +357,13 @@ function editPlaylist(playlistID) {
 }
 
 function loadEditPlaylist() {
-  const playlistID = localStorage.getItem("editPlaylistID");
-  const userPlaylists = JSON.parse(
-    localStorage.getItem("userPlaylists") || "[]"
-  );
-  let playlist = userPlaylists.find((p) => p.playlistID == playlistID);
-  // User created playlist
+  const playlistID = Date.now();
+  const playlist = allPlaylists.find((p) => p.playlistID == playlistID);
   if (playlist) {
     populateEditForm(playlist);
   } else {
-    // Must be JSON playlist
-    fetch("./data/data.json")
-      .then((data) => data.json())
-      .then((jsonData) => {
-        playlist = jsonData.find((p) => p.playlistID == playlistID);
-        if (playlist) {
-          populateEditForm(playlist);
-        }
-      })
-      .catch((error) => {
-        console.log("Error with fetching data", error);
-        window.location.href = "index.html";
-      });
+    alert("Playlist not found");
+    window.location.href = "index.html";
   }
 }
 
@@ -423,7 +381,7 @@ function populateEditForm(playlist) {
 function saveEditedPlaylist(event) {
   // Prevent page refresh
   event.preventDefault();
-  const playlistID = localStorage.getItem("editPlaylistID");
+  const playlistID = Date.now();
   const playlistName = document.getElementById("playlist_name").value;
 
   const playlistAuthor = document.getElementById("playlist_author").value;
@@ -441,28 +399,17 @@ function saveEditedPlaylist(event) {
     songs.push([songName, artist, album, duration, art]);
   });
 
-  const currentPlaylists = JSON.parse(
-    localStorage.getItem("userPlaylists") || "[]"
-  );
-  const index = currentPlaylists.findIndex((p) => p.playlistID == playlistID);
-  const updatedPlaylist = {
-    playlistID: playlistID,
-    playlist_name: playlistName,
-    playlist_author: playlistAuthor,
-    playlist_art: playlistArt,
-    songs: songs,
-    like_count: 0,
-  };
-
-  // Prevent duplicate edited playlists
+  const index = allPlaylists.findIndex((p) => p.playlistID == playlistID);
   if (index !== -1) {
-    currentPlaylists[index] = updatedPlaylist;
-  } else {
-    currentPlaylists.push(updatedPlaylist);
+    allPlaylists[index] = {
+      ...allPlaylists[index],
+      playlist_name: playlistName,
+      playlist_author: playlistAuthor,
+      playlist_art: playlistArt,
+      songs: songs,
+    };
   }
 
-  localStorage.setItem("userPlaylists", JSON.stringify(currentPlaylists));
-  localStorage.removeItem("editPlaylistID");
   window.location.href = "index.html";
 }
 function clearModalSongs() {
