@@ -4,6 +4,8 @@ const span = document.getElementsByClassName("close")[0];
 let currShuffleFunc = null;
 let allPlaylists = [];
 let currentSearchTerm = "";
+
+// Fetches playlist data from JSON file
 fetch("./data/data.json")
   .then((data) => data.json())
   .then((jsonData) => {
@@ -11,6 +13,8 @@ fetch("./data/data.json")
       localStorage.getItem("userPlaylists") || "[]"
     );
     allPlaylists = [...jsonData, ...userPlaylists];
+
+    // Sets up for featured playlist page
     if (window.location.href.includes("featured.html")) {
       showFeaturedPlaylist(allPlaylists);
     } else {
@@ -21,6 +25,7 @@ fetch("./data/data.json")
     console.log("Error with fetching data", error);
   });
 
+// Sets up for add playlist modal
 if (window.location.href.includes("add_playlist.html")) {
   const addSongButton = document.getElementById("add_song_btn");
   const form = document.getElementById("playlistForm");
@@ -33,6 +38,7 @@ if (window.location.href.includes("add_playlist.html")) {
   form.addEventListener("submit", createPlaylist);
 }
 
+// Creates new playlist
 function createPlaylist(event) {
   event.preventDefault();
   const playlistName = document.getElementById("playlist_name").value;
@@ -66,10 +72,12 @@ function createPlaylist(event) {
   window.location.href = "index.html";
 }
 
+// Cancel creation of new playlist
 function cancelPlaylist() {
   window.location.href = "index.html";
 }
 
+// Add song to playlist during playlist creation
 function addSong() {
   const container = document.getElementById("songs_section");
   const songDiv = document.createElement("div");
@@ -92,6 +100,7 @@ function addSong() {
   container.appendChild(songDiv);
 }
 
+// Randomly select a playlist to show in features page
 function showFeaturedPlaylist(data) {
   if (!Array.isArray(data) || data.length === 0) {
     const container = document.querySelector(".featured_container");
@@ -129,6 +138,7 @@ function showFeaturedPlaylist(data) {
   const playlistSection = document.createElement("div");
   playlistSection.setAttribute("class", "featured_right");
 
+  // Creates list of playlist's songs
   if (featuredPlaylist.songs && featuredPlaylist.songs.length > 0) {
     const songsList = document.createElement("div");
     songsList.setAttribute("class", "featured_songs_list");
@@ -169,6 +179,7 @@ function showFeaturedPlaylist(data) {
   container.appendChild(playlistSection);
 }
 
+// Create playlist cards that are visible on home screen
 function createPlaylistCards(data) {
   const section = document.querySelector(".playlist_cards");
 
@@ -223,6 +234,7 @@ function createPlaylistCards(data) {
   });
 }
 
+// Creates section with like button and like count for each playlist card
 function createLikeView(playlist) {
   const likeDiv = document.createElement("div");
   likeDiv.setAttribute("class", "like_div");
@@ -251,6 +263,7 @@ function createLikeView(playlist) {
   return likeDiv;
 }
 
+// Modal opens with given playlist's information
 function openModal(playlistDict) {
   clearModalSongs();
 
@@ -298,6 +311,15 @@ function openModal(playlistDict) {
   modal.style.display = "block";
 }
 
+// Clear songs in playlist modal
+function clearModalSongs() {
+  const songsContainer = document.getElementById("songs_list_container");
+  if (songsContainer) {
+    songsContainer.innerHTML = "";
+  }
+}
+
+// Shuffles the songs in playlist modal
 function shufflePlaylistDisplay(playlistDict) {
   const songsContainer = document.getElementById("songs_list_container");
   let indices = [];
@@ -331,53 +353,32 @@ function shufflePlaylistDisplay(playlistDict) {
   });
 }
 
-function clearModalSongs() {
-  const songsContainer = document.getElementById("songs_list_container");
-  if (songsContainer) {
-    songsContainer.innerHTML = "";
-  }
-}
-
-if (span) {
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-}
-
-if (modal) {
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-}
-
 const searchBar = document.querySelector("#search-bar");
 const searchClearBtn = document.querySelector("#search-clear");
 const searchSubmit = document.querySelector("#search-submit");
 
+// Starts search logic when submit button is clicked
 searchSubmit.addEventListener("click", function () {
-  console.log("typing");
   handleSearch();
 });
 
+// Starts search logic when enter button is pressed
 searchBar.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    console.log("typing");
-
     handleSearch();
   }
 });
 
+// Clears search bar and resets playlists when clear button is clicked
 searchClearBtn.addEventListener("click", function () {
   searchBar.value = "";
   currentSearchTerm = "";
   const section = document.querySelector(".playlist_cards");
   section.innerHTML = "";
   createPlaylistCards(allPlaylists);
-  console.log("clear search bar");
 });
 
+// Runs after search bar is submitted, handles search logic
 function handleSearch() {
   const searchBar = document.querySelector("#search-bar");
   currentSearchTerm = searchBar.value;
@@ -393,6 +394,7 @@ function handleSearch() {
   createPlaylistCards(filteredPlaylists);
 }
 
+// Filters playlists in home view using given search term
 function filterPlaylists(searchTerm) {
   if (!searchTerm) {
     return allPlaylists;
@@ -410,4 +412,18 @@ function filterPlaylists(searchTerm) {
       return true;
     }
   });
+}
+
+if (span) {
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+}
+
+if (modal) {
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 }

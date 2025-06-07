@@ -145,7 +145,13 @@
         "./assets/img/abba2.jpeg"
       ],
       ["Dancing Queen", "ABBA", "Arrival", "3:50", "./assets/img/abba3.jpeg"],
-      ["The Winner Takes It All", "ABBA", "Super Trouper", "4:20", "./assets/img/abba4.jpeg"]
+      [
+        "The Winner Takes It All",
+        "ABBA",
+        "Super Trouper",
+        "4:20",
+        "./assets/img/abba4.jpeg"
+      ]
     ],
     "like_count": 5
   },
@@ -163,13 +169,7 @@
         "3:32",
         "./assets/img/olivia.jpeg"
       ],
-      [
-        "Obsessed",
-        "Olivia Rodrigo",
-        "Guts",
-        "2:50",
-        "./assets/img/guts2.jpeg"
-      ]
+      ["Obsessed", "Olivia Rodrigo", "Guts", "2:50", "./assets/img/guts2.jpeg"]
     ],
     "like_count": 17
   },
@@ -187,7 +187,13 @@
         "./assets/img/riptide.jpeg"
       ],
       ["Santeria", "Sublime", "Sublime", "3:03", "./assets/img/sublime.jpeg"],
-      ["Tongue Tied", "GROUPLOVE", "Never Trust a Happy Song", "3:38", "./assets/img/grouplove.jpeg"]
+      [
+        "Tongue Tied",
+        "GROUPLOVE",
+        "Never Trust a Happy Song",
+        "3:38",
+        "./assets/img/grouplove.jpeg"
+      ]
     ],
     "like_count": 20
   }

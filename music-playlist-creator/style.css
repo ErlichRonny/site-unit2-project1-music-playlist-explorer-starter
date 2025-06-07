@@ -175,6 +175,14 @@ footer {
   justify-content: center;
 }
 
+#featured {
+  text-decoration: underline;
+}
+
+#home {
+  text-decoration: underline;
+}
+
 .featured_container {
   display: flex;
   justify-content: center;
@@ -193,10 +201,9 @@ footer {
 }
 
 .featured_playlist_img {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  object-fit: cover;
   border-radius: 12px;
 }
 
@@ -212,8 +219,7 @@ footer {
 .featured_right {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
-  margin-left: 20px;
+
   flex: 1;
   max-width: 700px;
 }
@@ -233,6 +239,7 @@ footer {
   display: flex;
   align-items: center;
   padding: 15px;
+  margin-left: -30px;
   background-color: #eb9f9f;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -331,6 +338,6 @@ footer {
 }
 
 .sort_button {
-  background-color:#ebc2c2;
+  background-color: #ebc2c2;
   margin-left: 10px;
 }

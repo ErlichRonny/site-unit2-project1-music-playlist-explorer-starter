@@ -2,7 +2,7 @@
 
 Submitted by: Ronny Erlich
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 10 hours spent in total
 
 Deployed Application (**required**): [Music Playlist Explorer Deployed Site] https://site-unit2-project1-music-playlist-wugy.onrender.com
 
@@ -85,9 +85,9 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
   - [x] The resulting playlist should display in the grid view.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself adding at least two songs to the playlist. 
 
-- [ ] **Edit Existing Playlists**
+- [x] **Edit Existing Playlists**
   - [ ] Enable users to modify the details of existing playlists.
-  - [ ] Add an edit button to each playlist tile.
+  - [x] Add an edit button to each playlist tile.
   - [ ] Users can update the playlist:
     - [ ] Name
     - [ ] Author
@@ -101,38 +101,46 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
   - [x] Add a delete button to each playlist tile within the grid view.
   - [x] When clicked, the playlist is removed from the playlist grid view.
 
-- [ ] **Search Functionality**
-  - [ ] Implement a search bar that allows users to filter playlists by:
-    - [ ] Name 
-    - [ ] Author
-  - [ ] The search bar should include:
-    - [ ] Text input field
-    - [ ] Submit/Search Button
-    - [ ] Clear Button
-  - [ ] Playlists matching the search query in the text input are displayed in a grid view when the user:
-    - [ ] Presses the Enter Key
-    - [ ] Clicks the Submit/Search Button 
-  - [ ] User can click the clear button. When clicked:
-    - [ ] All text in the text input field is deleted
-    - [ ] All playlists in the `data.json` file are displayed in a grid view
-    - [ ] **Optional:** If the Add Playlist, Edit Existing Playlist, or Delete Playlist stretch features were implemented:
+- [x] **Search Functionality**
+  - [x] Implement a search bar that allows users to filter playlists by:
+    - [x] Name 
+    - [x] Author
+  - [x] The search bar should include:
+    - [x] Text input field
+    - [x] Submit/Search Button
+    - [x] Clear Button
+  - [x] Playlists matching the search query in the text input are displayed in a grid view when the user:
+    - [x] Presses the Enter Key
+    - [x] Clicks the Submit/Search Button 
+  - [x] User can click the clear button. When clicked:
+    - [x] All text in the text input field is deleted
+    - [x] All playlists in the `data.json` file are displayed in a grid view
+    - [x] **Optional:** If the Add Playlist, Edit Existing Playlist, or Delete Playlist stretch features were implemented:
       - [ ] If users can add a playlist, added playlists should be included in search results.
       - [ ] If users can edit a playlist, search results should reflect the latest edits to each playlist.
       - [ ] If users can delete a playlist, deleted playlists should no longer be included in search results.
       - **Note:** You will not be graded on the implementation of this optional subfeature to keep your grade of this stretch feature independent of your implementation of other stretch features. However, we highly suggest including this in your implementation to model realistic behavior of real applications. 
 
-- [ ] **Sorting Options**
-  - [ ] Implement a drop-down or button options that allow users to sort the playlist by:
-    - [ ] Name (A-Z alphabetically)
-    - [ ] Number of likes (descending order)
-    - [ ] Date added (most recent to oldest, chronologically)
+- [x] **Sorting Options**
+  - [x] Implement a drop-down or button options that allow users to sort the playlist by:
+    - [x] Name (A-Z alphabetically)
+    - [x] Number of likes (descending order)
+    - [x] Date added (most recent to oldest, chronologically)
   - [ ] Selecting a sort option should result in a reordering based on the selected sort while maintaining a grid view.
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
+ Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/12a85d2a9d8645d3be6c183f3a9c6d17">
+      <p>Music Playlist Explorer - 6 June 2025 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/12a85d2a9d8645d3be6c183f3a9c6d17">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/12a85d2a9d8645d3be6c183f3a9c6d17-66398c539966d41a-full-play.gif">
+    </a>
+  </div>
+
 
 ### Reflection
 
