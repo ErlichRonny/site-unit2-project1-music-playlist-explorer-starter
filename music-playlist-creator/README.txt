@@ -23,7 +23,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
     - [x] Author
     - [x] Like count
 
-- [ ] **Playlist Details**
+- [x] **Playlist Details**
   - [x] Create a modal pop-up view that displays detailed information about a playlist when a user clicks on a playlist tile.
   - [x] The modal should show the playlist's:
     - [x] Cover image
@@ -48,9 +48,9 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
     - [x] If previously liked:
       - [x] The like count on the playlist tile should decrease by 1.
       - [x] There should be visual feedback (such as the heart turning a different color) to show that the playlist has been unliked by the user.
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** In addition to showcasing the above features, for ease of grading, please film yourself liking and unliking:
-      - [ ] a playlist with a like count of 0
-      - [ ] a playlist with a non-zero like count
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** In addition to showcasing the above features, for ease of grading, please film yourself liking and unliking:
+      - [x] a playlist with a like count of 0
+      - [x] a playlist with a non-zero like count
 
 - [x] **Shuffle Songs**
   - [x] Enable users to shuffle the songs within a playlist using a shuffle button in the playlist's detail modal.
@@ -68,8 +68,8 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
   - [x] When the page is refreshed or reloaded, a new random playlist is displayed
     - For example, navigating to the all playlists page and then back to the featured playlist page should result in a new random playlist being displayed
     - Note that because your algorithm will not be truly random, it is possible that the same playlist will feature twice in a row. 
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** In addition to showcasing the above features, for ease of grading, please show yourself refreshing the featured page more than once. 
-  - [ ] Application includes a navigation bar or some other mechanism such that users can navigate to the page with all playlists from the featured page and vice versa without using the browser's back and forward buttons. 
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** In addition to showcasing the above features, for ease of grading, please show yourself refreshing the featured page more than once. 
+  - [x] Application includes a navigation bar or some other mechanism such that users can navigate to the page with all playlists from the featured page and vice versa without using the browser's back and forward buttons. 
 
 #### STRETCH FEATURES
 
@@ -146,20 +146,20 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I mostly felt prepared to complete the assignment. I think the stretch features required more outside work and research, but they weren't impossible.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I would have finished my implementation of local storage. I ran out of time for the edit functionality, but the next thing I would do is fix that. I would also finish the sort functionality.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I didn't present a project demo this week.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+n/a
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shout out to Bob for being very positive and encouraging!
