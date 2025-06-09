@@ -136,9 +136,6 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site] htt
     <a href="https://www.loom.com/share/12a85d2a9d8645d3be6c183f3a9c6d17">
       <p>Music Playlist Explorer - 6 June 2025 - Watch Video</p>
     </a>
-    <a href="https://www.loom.com/share/12a85d2a9d8645d3be6c183f3a9c6d17">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/12a85d2a9d8645d3be6c183f3a9c6d17-66398c539966d41a-full-play.gif">
-    </a>
   </div>
 
 
